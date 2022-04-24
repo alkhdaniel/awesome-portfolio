@@ -1,4 +1,5 @@
 import React from "react"
+import Header from "../components/header"
 import styled, { createGlobalStyle } from "styled-components"
 
 // styles
@@ -40,8 +41,6 @@ const GlobalStyle = createGlobalStyle`
 
 const NavBar = styled.div`
 `;
-const Header = styled.div`
-`;
 const Content = styled.div`
 	width: var(--main-width);
 	margin: auto;
@@ -73,15 +72,16 @@ const AwesomePortfolio = () => {
 				<title>{pageTitle}</title>
 				<NavBar>
 				</NavBar>
-				<Header>
-				</Header>
+				<Header name={name} />
 				<Content>
-					<h1>{name}</h1>
 					<Skills>
+					lorem
 					</Skills>
 					<Projects>
+					lorem
 					</Projects>
 					<Education>
+					lorem
 					</Education>
 				</Content>
 				<Footer>
