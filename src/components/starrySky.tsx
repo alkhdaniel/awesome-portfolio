@@ -41,26 +41,25 @@ const StarrySky = props => {
 	       if (this.r > 2.5){
 	           this.rChange = -this.rChange;
 	       }
-	       if (this.r < 0.2) {
+	       if (this.r < 0.1) {
 	       		arrStars.splice(i,1)
-	       		addStar()
+	       		addStar(Math.random() * 0.75 + .1)
 	       }
 	       this.r += this.rChange;
 	    }
 	}
 	var arrStars = [];
 
-	function addStar() {
+	function addStar(randR) {
 		var randX = Math.floor((Math.random()*C_WIDTH)+1);
 	    var randY = Math.floor((Math.random()*C_HEIGHT)+1);
-	    var randR = Math.random() * 1.8 + .2;
 
 	    var star = new Star(randX, randY, randR, randomColor());
 	    arrStars.push(star);
 	}
 
 	for(let i = 0; i < 100; i++){
-	    addStar()
+	    addStar(Math.random() * 2.4 + .1)
 	}
 
 	function randomColor(){
