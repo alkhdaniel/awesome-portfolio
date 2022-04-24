@@ -9,7 +9,8 @@ const HeaderContainer = styled.div`
 	height:75vh;
 `;
 const Title = styled.h1`
-	top:20%;
+	top:15%;
+	max-height:50%;
 	position:relative;
 	text-align:center;
 	font-family: 'Segoe ui', sans-serif;
