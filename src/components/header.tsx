@@ -13,7 +13,7 @@ const Title = styled.h1`
 	position:absolute;
 	text-align:center;
 	font-family: 'Segoe ui', sans-serif;
-	color: var(--titleColor)
+	color: var(--headerColor)
 `;
 const Name = styled.div`
 	font-size:2.5rem
