@@ -1,20 +1,34 @@
-import * as React from 'react'
+import React, {useRef, useEffect} from 'react'
 import styled from "styled-components"
 
 const HeaderContainer = styled.div`
 	display:flex;
 	align-items: center;
 	justify-content: center;
-	background-color: black;
+	background: linear-gradient(#1c2948 5%, #614973 30%, #c86496 60%, #f5bea5 80%, var(--background-color) 100%);
 	height:75vh;
 `;
-const Name = styled.h1`
+const Title = styled.h1`
+	text-align:center;
+	font-family: 'Segoe ui', sans-serif;
+	color: var(--titleColor)
+`;
+const Name = styled.div`
+	font-size:2.5rem
+`;
+const Industry = styled.div`
+	font-size:2rem
 `;
 
-const Header = ({ name }) => {
+
+
+const Header = ({ name, industry }) => {
   return (
     <HeaderContainer>
-    	<Name>{name}</Name>
+    	<Title>
+	    	<Name>{name}</Name>
+	    	<Industry>{industry}</Industry>
+	    </Title>
     </HeaderContainer>
   )
 }
