@@ -1,13 +1,15 @@
 import React from "react"
 import Header from "../components/header"
+import About from "../components/about"
 import styled, { createGlobalStyle } from "styled-components"
 
 // styles
 const GlobalStyle = createGlobalStyle`
 	/*dark theme*/
 	:root {
-	    --main-width: auto;
-	    --titleColor: #f2f2f2;
+	    --mainWidth: auto;
+	    --headerColor: #f2f2f2;
+	    --titleColor: #222431;
 	    --textColor: #080808;
 	    --background-color: #ffeddb;
 	    --elevation1: #222431;
@@ -21,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
 	    --padding: 16px;
 	}
     html, body {
+    	font-family: Roboto, sans-serif;
         margin: 0;
         padding: 0;
         color: var(--textColor);
@@ -28,13 +31,13 @@ const GlobalStyle = createGlobalStyle`
     }
     @media only screen and (min-width: 900px) {
 		:root {
-			--main-width: 880px;
+			--mainWidth: 880px;
 		}
 	}
 
 	@media only screen and (min-width: 1200px) {
 		:root {
-			--main-width: 1024px;
+			--mainWidth: 1024px;
 		}
 	}
  `
@@ -42,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
 const NavBar = styled.div`
 `;
 const Content = styled.div`
-	width: var(--main-width);
+	width: var(--mainWidth);
 	margin: auto;
 	text-align: center;
 `;
@@ -74,6 +77,7 @@ const AwesomePortfolio = () => {
 				<NavBar>
 				</NavBar>
 				<Header name={name} industry={industry}/>
+				<About />
 				<Content>
 					<Skills>
 					lorem
