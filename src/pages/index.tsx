@@ -12,14 +12,6 @@ const GlobalStyle = createGlobalStyle`
 	    --titleColor: #222431;
 	    --textColor: #080808;
 	    --background-color: #ffeddb;
-	    --elevation1: #222431;
-	    --elevation2: #272937;
-	    --elevation3: #1f2230;
-	    --nav-border-color: #36384a;
-	    --link-color1: #a2bdf2;
-	    --link-color2: #bdc1d1;
-	    --link-hover-color: #2b6777;
-	    --accent1: #f0a040;
 	    --padding: 16px;
 	}
     html, body {

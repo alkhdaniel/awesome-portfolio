@@ -10,7 +10,7 @@ const HeaderContainer = styled.div`
 `;
 const Title = styled.h1`
 	top:15%;
-	max-height:50%;
+	max-height:30%;
 	position:relative;
 	text-align:center;
 	font-family: 'Segoe ui', sans-serif;
@@ -19,6 +19,9 @@ const Title = styled.h1`
 const Name = styled.div`
 	font-size:2.5rem
 `;
+
+
+
 const Industry = styled.div`
 	font-size:2rem
 `;
