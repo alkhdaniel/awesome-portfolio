@@ -1,5 +1,6 @@
-import React, {useRef, useEffect} from 'react'
+import React from 'react'
 import styled from "styled-components"
+import StarrySky from "./starrySky"
 
 const HeaderContainer = styled.div`
 	display:flex;
@@ -25,6 +26,7 @@ const Industry = styled.div`
 const Header = ({ name, industry }) => {
   return (
     <HeaderContainer>
+    	<StarrySky />
     	<Title>
 	    	<Name>{name}</Name>
 	    	<Industry>{industry}</Industry>
