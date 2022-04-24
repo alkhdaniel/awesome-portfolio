@@ -10,6 +10,7 @@ const HeaderContainer = styled.div`
 	height:75vh;
 `;
 const Title = styled.h1`
+	position:absolute;
 	text-align:center;
 	font-family: 'Segoe ui', sans-serif;
 	color: var(--titleColor)
