@@ -1,4 +1,5 @@
 import React from "react"
+import Header from "../components/header"
 import styled, { createGlobalStyle } from "styled-components"
 
 // styles
@@ -6,9 +7,9 @@ const GlobalStyle = createGlobalStyle`
 	/*dark theme*/
 	:root {
 	    --main-width: auto;
-	    --text-color: #f2f2f2;
-	    --text-color-unimportant: #999;
-	    --background-color: #1d1f29;
+	    --titleColor: #f2f2f2;
+	    --textColor: #080808;
+	    --background-color: #ffeddb;
 	    --elevation1: #222431;
 	    --elevation2: #272937;
 	    --elevation3: #1f2230;
@@ -22,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
     html, body {
         margin: 0;
         padding: 0;
-        color: var(--text-color);
+        color: var(--textColor);
         background-color: var(--background-color);
     }
     @media only screen and (min-width: 900px) {
@@ -39,8 +40,6 @@ const GlobalStyle = createGlobalStyle`
  `
 
 const NavBar = styled.div`
-`;
-const Header = styled.div`
 `;
 const Content = styled.div`
 	width: var(--main-width);
@@ -60,6 +59,7 @@ const Education = styled.div`
 // data
 const pageTitle = "Daniel Al-Khrysat - Portfolio";
 const name = "Daniel Al-Khrysat";
+const industry = "Frontend/Fullstack Developer";
 const skills = ["JavaSript", "React"];
 const projects = [];
 const education = [];
@@ -73,15 +73,16 @@ const AwesomePortfolio = () => {
 				<title>{pageTitle}</title>
 				<NavBar>
 				</NavBar>
-				<Header>
-				</Header>
+				<Header name={name} industry={industry}/>
 				<Content>
-					<h1>{name}</h1>
 					<Skills>
+					lorem
 					</Skills>
 					<Projects>
+					lorem
 					</Projects>
 					<Education>
+					lorem
 					</Education>
 				</Content>
 				<Footer>
