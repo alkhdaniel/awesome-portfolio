@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 	/*dark theme*/
 	:root {
 	    --mainWidth: auto;
-	    --headerColor: #f2f2f2;
+	    --headerColor: #dadbdc;
 	    --titleColor: #222431;
 	    --textColor: #080808;
 	    --background-color: #ffeddb;
@@ -62,7 +62,7 @@ const Education = styled.div`
 // data
 const pageTitle = "Daniel Al-Khrysat - Portfolio";
 const name = "Daniel Al-Khrysat";
-const industry = "Frontend/Fullstack Developer";
+const industry = "Front End Developer";
 const skills = ["JavaSript", "React"];
 const projects = [];
 const education = [];

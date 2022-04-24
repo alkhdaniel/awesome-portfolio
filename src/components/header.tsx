@@ -4,13 +4,13 @@ import StarrySky from "./starrySky"
 
 const HeaderContainer = styled.div`
 	display:flex;
-	align-items: center;
 	justify-content: center;
 	background: linear-gradient(#1c2948 5%, #614973 30%, #c86496 60%, #f5bea5 80%, var(--background-color) 100%);
 	height:75vh;
 `;
 const Title = styled.h1`
-	position:absolute;
+	top:20%;
+	position:relative;
 	text-align:center;
 	font-family: 'Segoe ui', sans-serif;
 	color: var(--headerColor)

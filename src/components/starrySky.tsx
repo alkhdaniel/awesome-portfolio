@@ -16,55 +16,56 @@ const StarrySky = props => {
     const canvas = canvasRef.current
     const context = canvas.getContext('2d')
 
-    var C_WIDTH = canvas.width = document.body.offsetWidth;
-	var C_HEIGHT = canvas.height = document.body.offsetHeight*0.65;
+	window.onresize = updateCanvasSize;
+	function updateCanvasSize() {
+		canvas.width = document.body.offsetWidth;
+		canvas.height = canvas.parentElement.clientHeight*0.6;
+	}
+	updateCanvasSize();
 
-	function Star(x,y,r,color){
+	let arrStars = []
+	let starCount;
+	canvas.width < 800 ? starCount = 25 : starCount = 70;
+
+	function Star(x,y,size,sizeChangeSpeed){
 	    this.x = x;
 	    this.y = y;
-	    this.r = r;
-	    this.rChange = 0.02;
-	    this.color = color;
+	    this.size = size;
+	    this.sizeChange = sizeChangeSpeed;
 	}
-
 	Star.prototype = {
 	    constructor: Star,
 	    render: function(){
-	      context.beginPath();
-	      context.arc(this.x, this.y, this.r, 0, 2*Math.PI, false);
-	      context.shadowBlur = 8; 
-	      context.shadowColor = "white";
-	      context.fillStyle = this.color;
-	      context.fill();
+	    	context.save();
+			context.translate(this.x,this.y);
+			context.scale(this.size,this.size);
+			context.rotate(Math.PI/4);
+			context.shadowBlur = 8; 
+			context.shadowColor = "white";
+			context.fillStyle = "white";
+			context.fillRect(-this.size/2,-this.size/2,this.size,this.size);
+			context.restore();
 	    },
 	    update: function(i){
-	       if (this.r > 2.5){
-	           this.rChange = -this.rChange;
+	       if (this.size > 2.5){
+	           this.sizeChange = -this.sizeChange;
 	       }
-	       if (this.r < 0.1) {
+	       if (this.size < 0.1) {
 	       		arrStars.splice(i,1)
 	       		addStar(Math.random() * 0.75 + .1)
 	       }
-	       this.r += this.rChange;
+	       this.size += this.sizeChange;
 	    }
 	}
-	var arrStars = [];
-
-	function addStar(randR) {
-		var randX = Math.floor((Math.random()*C_WIDTH)+1);
-	    var randY = Math.floor((Math.random()*C_HEIGHT)+1);
-
-	    var star = new Star(randX, randY, randR, randomColor());
+	function addStar(size) {
+		var x = Math.floor((Math.random()*canvas.width)+1);
+	    var y = Math.floor((Math.random()*canvas.height)+1);
+	    var sizeChangeSpeed = (Math.random()*0.025+0.005)
+	    var star = new Star(x, y, size, sizeChangeSpeed);
 	    arrStars.push(star);
 	}
-
-	for(let i = 0; i < 100; i++){
+	for(let i = 0; i < starCount; i++){
 	    addStar(Math.random() * 2.4 + .1)
-	}
-
-	function randomColor(){
-		var arrColors = ["ffffff", "ffecd3" , "bfcfff"];
-		return "#"+arrColors[Math.floor((Math.random()*3))];
 	}
 
 	function update(){
@@ -73,10 +74,8 @@ const StarrySky = props => {
 	  }
 	}
 	function animate(){
-		C_WIDTH = canvas.width = document.body.offsetWidth;
-		C_HEIGHT = canvas.height = document.body.offsetHeight*0.65;
 	  update();
-	    context.clearRect(0,0,C_WIDTH,C_HEIGHT);
+	    context.clearRect(0,0,canvas.width, canvas.height);
 	    for(let i = 0; i < arrStars.length; i++){
 	      arrStars[i].render();
 	    }
