@@ -2,39 +2,93 @@ import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
 
 // styles
-/*dark theme*/
-const theme = []
-theme.mainWidth = "auto";
-theme.backgroundColor = "#1d1f29";
-theme.textColor = "#f2f2f2";
-
 const GlobalStyle = createGlobalStyle`
+	/*dark theme*/
+	:root {
+	    --main-width: auto;
+	    --text-color: #f2f2f2;
+	    --text-color-unimportant: #999;
+	    --background-color: #1d1f29;
+	    --elevation1: #222431;
+	    --elevation2: #272937;
+	    --elevation3: #1f2230;
+	    --nav-border-color: #36384a;
+	    --link-color1: #a2bdf2;
+	    --link-color2: #bdc1d1;
+	    --link-hover-color: #2b6777;
+	    --accent1: #f0a040;
+	    --padding: 16px;
+	}
     html, body {
         margin: 0;
         padding: 0;
-        color: ${theme.textColor};
-        background-color: ${theme.backgroundColor};
+        color: var(--text-color);
+        background-color: var(--background-color);
     }
+    @media only screen and (min-width: 900px) {
+		:root {
+			--main-width: 880px;
+		}
+	}
+
+	@media only screen and (min-width: 1200px) {
+		:root {
+			--main-width: 1024px;
+		}
+	}
  `
+
+const NavBar = styled.div`
+`;
+const Header = styled.div`
+`;
+const Content = styled.div`
+	width: var(--main-width);
+	margin: auto;
+	text-align: center;
+`;
+const Footer = styled.div`
+`;
+
+const Skills = styled.div`
+`;
+const Projects = styled.div`
+`;
+const Education = styled.div`
+`;
 
 // data
 const pageTitle = "Daniel Al-Khrysat - Portfolio";
 const name = "Daniel Al-Khrysat";
-const skills = [];
+const skills = ["JavaSript", "React"];
 const projects = [];
 const education = [];
 
 // markup
-const IndexPage = () => {
+const AwesomePortfolio = () => {
 	return (
 		<>
 			<GlobalStyle />
 			<main>
 				<title>{pageTitle}</title>
-				<h1>{name}</h1>
+				<NavBar>
+				</NavBar>
+				<Header>
+				</Header>
+				<Content>
+					<h1>{name}</h1>
+					<Skills>
+					</Skills>
+					<Projects>
+					</Projects>
+					<Education>
+					</Education>
+				</Content>
+				<Footer>
+				</Footer>
 			</main>
 		</>
 	)
 }
 
-export default IndexPage
+export default AwesomePortfolio
