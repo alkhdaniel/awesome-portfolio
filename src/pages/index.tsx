@@ -1,29 +1,99 @@
 import React from "react"
 import Header from "../components/header"
 import About from "../components/about"
+import Contact from "../components/contact"
 import styled, { createGlobalStyle } from "styled-components"
 
 // styles
 const GlobalStyle = createGlobalStyle`
 	/*dark theme*/
 	:root {
+		--font: "Roboto, sans-serif";
+		--headerFont: "Segoe ui, sans-serif";
+		--base-scale:calc(100vw / 150);
+		--h1Size: max(2rem, min(3.6rem, calc(var(--base-scale) * 4)));
+		--h2Size: max(1.5rem, min(2.75rem, calc(var(--base-scale) * 3)));
+		--headerSize: ""
 	    --mainWidth: auto;
 	    --headerColor: #dadbdc;
 	    --titleColor: #f2f2f2;
 	    --textColor: #f2f2f2;
 	    --backgroundColor: #064273;
 	    --sunPosition: 0px;
+	    --linkColor: #F0A040;
 	    --padding: 16px;
 	}
 	* {
+		box-sizing: border-box;
 		margin:0;
 		padding:0;
 	}
     html {
-		font-family: Consolas, monaco, monospace;
+		font-family: var(--font);
         color: var(--textColor);
         background-color: var(--backgroundColor);
     }
+    h1, h2, h3 {
+    	font-family: var(--headerFont);
+    }
+    h1 {
+    	font-size:var(--h1Size);
+    	font-weight:600;
+    	letter-spacing:2px;
+    }
+    h2 {
+    	font-size:var(--h2Size);
+    	font-weight:500;
+    	letter-spacing:1px;
+    }
+	a {
+		padding: 0px 0;
+		margin: 8px 0;
+		color: #237546;
+		text-shadow: none;
+		-webkit-transition: color 0.3s;
+		-moz-transition: color 0.3s;
+		transition: color 0.3s;
+		position: relative;
+		color: #fff;
+		text-decoration: none;
+		outline: none;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-size:1rem
+	}
+
+	a::before, a::after {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: #fff;
+		content: '';
+		opacity: 0;
+		transition: opacity 0.3s, transform 0.3s;
+		transform: translateY(-10px);
+	}
+	a::before {
+		top: 0;
+		transform: translateY(-4px);
+	}
+	a::after {
+		bottom: 0;
+		transform: translateY(4px);
+	}
+
+	a:hover {
+		color: #fff;
+	}
+	a:hover::before, a:hover::after {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+
+
+
+
     @media only screen and (min-width: 900px) {
 		:root {
 			--mainWidth: 880px;
@@ -32,6 +102,7 @@ const GlobalStyle = createGlobalStyle`
 
 	@media only screen and (min-width: 1200px) {
 		:root {
+			font-size:18px;
 			--mainWidth: 1024px;
 		}
 	}
@@ -47,20 +118,16 @@ const Content = styled.div`
 const Footer = styled.div`
 `;
 
-const Skills = styled.div`
-`;
-const Projects = styled.div`
-`;
-const Education = styled.div`
-`;
 
 // data
 const pageTitle = "Daniel Al-Khrysat - Portfolio";
 const name = "Daniel Al-Khrysat";
 const industry = "Front End Developer";
+const contactLinks = [
+	{"text":"daniel@alkhrysat.com", "url":"mailto:daniel@alkhrysat.com"},
+	{"text":"github","url":"https://github.com/alkhdaniel"},
+	{"text":"linkedin","url":"https://www.linkedin.com/in/daniel-alkhrysat/"}]
 const skills = ["JavaSript", "React"];
-const projects = [];
-const education = [];
 
 // markup
 const AwesomePortfolio = () => {
@@ -69,23 +136,11 @@ const AwesomePortfolio = () => {
 			<GlobalStyle />
 			<main>
 				<title>{pageTitle}</title>
-				<NavBar>
-				</NavBar>
+				<NavBar />
 				<Header name={name} industry={industry}/>
 				<About />
-				<Content>
-					<Skills>
-					lorem
-					</Skills>
-					<Projects>
-					lorem
-					</Projects>
-					<Education>
-					lorem
-					</Education>
-				</Content>
-				<Footer>
-				</Footer>
+				<Contact links={contactLinks} />
+				<Footer />
 			</main>
 		</>
 	)

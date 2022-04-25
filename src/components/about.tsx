@@ -6,7 +6,7 @@ const AboutContainer = styled.div`
     margin:auto;
     padding:var(--padding)
 `;
-const Title = styled.h1`
+const Title = styled.h2`
     text-align:center;
     font-family: 'Segoe ui', sans-serif;
     color: var(--titleColor)
