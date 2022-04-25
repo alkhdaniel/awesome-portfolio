@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 	:root {
 		--font: "Roboto, sans-serif";
 		--headerFont: "Segoe ui, sans-serif";
+		--headerPosition: 0px;
 		--base-scale:calc(100vw / 150);
 		--h1Size: max(2rem, min(3.6rem, calc(var(--base-scale) * 4)));
 		--h2Size: max(1.5rem, min(2.75rem, calc(var(--base-scale) * 3)));
@@ -39,7 +40,7 @@ const GlobalStyle = createGlobalStyle`
     html {
 		font-family: var(--font);
         color: var(--textColor);
-        background: linear-gradient(var(--backgroundInitial) 5%, var(--backgroundColor) 90%);
+        background: var(--backgroundInitial);
     }
     h1, h2, h3 {
     	font-family: var(--headerFont);

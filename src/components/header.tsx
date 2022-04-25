@@ -4,10 +4,13 @@ import StarrySky from "./starrySky"
 
 const HeaderContainer = styled.div`
 	height:75vh;
+	overflow:hidden;
 `;
 const Sky = styled.div`
 	& {
 	position:relative;
+	top:var(--headerPosition);
+	z-index:-1;
 	background: linear-gradient(#1c2948 10%, #614973 40%, #c86496 70%, #f5bea5 100%);
 	height:70%;
 	overflow:hidden;}
@@ -36,9 +39,10 @@ const Title = styled.div`
 
 const Water = styled.div`
 	position:relative;
-	background: radial-gradient(80% 60% at 50% 0%, #ff846e, transparent);
+	background: radial-gradient(80% 60% at 50% 0%, #ff846e, var(--backgroundInitial));
 	height:30%;
 	overflow:hidden;
+	z-index:2;
 	&:after {						/*sun reflection*/
 		content:" ";
 		border-radius: 50%;
@@ -128,16 +132,18 @@ const Industry = styled.h2`
 
 const Header = ({ name, industry }) => {
 	document.addEventListener('scroll', function(e) {
-		let offset = (((window.pageYOffset/6)-25)*-1);
-		document.documentElement.style.setProperty('--sunPosition',(offset)+"px")
+		let offset = window.pageYOffset;
+		document.documentElement.style.setProperty('--sunPosition',(((offset/4)+25))+"px")
+		document.documentElement.style.setProperty('--headerPosition',(offset/2)+"px")
 		var style = window.getComputedStyle(document.documentElement);
-		if (offset > 10)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial1'))
-		else if (offset > 0)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial2'))
-		else if (offset > -10)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial3'))
-		else if (offset > -20)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial4'))
-		else if (offset > -30)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial5'))
-		else if (offset > -40)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial6'))
-		else document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial7'))
+		if (offset < 50)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial1'))
+		else if (offset < 100)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial2'))
+		else if (offset < 150)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial3'))
+		else if (offset < 200)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial4'))
+		else if (offset < 250)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial5'))
+		else if (offset < 300)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial6'))
+		else if (offset < 350)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial7'))
+		else document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundColor'))
 	});
 
 	return (
