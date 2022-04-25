@@ -5,6 +5,7 @@ const Canvas = styled.canvas`
 	position:absolute;
 	top:0;
 	right:0;
+	z-index:3;
 `
 
 
@@ -19,13 +20,13 @@ const StarrySky = props => {
 	window.onresize = updateCanvasSize;
 	function updateCanvasSize() {
 		canvas.width = document.body.offsetWidth;
-		canvas.height = canvas.parentElement.clientHeight*0.6;
+		canvas.height = canvas.parentElement.clientHeight;
 	}
 	updateCanvasSize();
 
 	let arrStars = []
 	let starCount;
-	canvas.width < 800 ? starCount = 25 : starCount = 70;
+	canvas.width < 800 ? starCount = 25 : starCount = 50;
 
 	function Star(x,y,size,sizeChangeSpeed){
 	    this.x = x;
@@ -58,10 +59,10 @@ const StarrySky = props => {
 	    }
 	}
 	function addStar(size) {
-		var x = Math.floor((Math.random()*canvas.width)+1);
-	    var y = Math.floor((Math.random()*canvas.height)+1);
-	    var sizeChangeSpeed = (Math.random()*0.025+0.005)
-	    var star = new Star(x, y, size, sizeChangeSpeed);
+		let x = Math.floor((Math.random()*canvas.width)+1);
+	    let y = Math.floor((Math.random()*canvas.height)+1);
+	    let sizeChangeSpeed = (Math.random()*0.02+0.005);
+	    let star = new Star(x, y, size, sizeChangeSpeed);
 	    arrStars.push(star);
 	}
 	for(let i = 0; i < starCount; i++){

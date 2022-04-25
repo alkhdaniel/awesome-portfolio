@@ -9,17 +9,19 @@ const GlobalStyle = createGlobalStyle`
 	:root {
 	    --mainWidth: auto;
 	    --headerColor: #dadbdc;
-	    --titleColor: #222431;
-	    --textColor: #080808;
-	    --background-color: #ffeddb;
+	    --titleColor: #f2f2f2;
+	    --textColor: #f2f2f2;
+	    --backgroundColor: #064273;
 	    --padding: 16px;
 	}
-    html, body {
+	* {
+		margin:0;
+		padding:0;
+	}
+    html {
 		font-family: Consolas, monaco, monospace;
-        margin: 0;
-        padding: 0;
         color: var(--textColor);
-        background-color: var(--background-color);
+        background-color: var(--backgroundColor);
     }
     @media only screen and (min-width: 900px) {
 		:root {
