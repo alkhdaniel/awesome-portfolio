@@ -18,8 +18,16 @@ const GlobalStyle = createGlobalStyle`
 	    --headerColor: #dadbdc;
 	    --titleColor: #f2f2f2;
 	    --textColor: #f2f2f2;
-	    --backgroundColor: #064273;
-	    --sunPosition: 0px;
+	    --backgroundInitial: #064273;
+	    --backgroundInitial2: #064273;
+	    --backgroundInitial2: #093D68;
+	    --backgroundInitial3: #0D385E;
+	    --backgroundInitial4: #103353;
+	    --backgroundInitial5: #132E49;
+	    --backgroundInitial6: #16293E;
+	    --backgroundInitial7: #1A2434;
+	    --backgroundColor: #1d1f29;
+	    --sunPosition: 25px;
 	    --linkColor: #F0A040;
 	    --padding: 16px;
 	}
@@ -31,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
     html {
 		font-family: var(--font);
         color: var(--textColor);
-        background-color: var(--backgroundColor);
+        background: linear-gradient(var(--backgroundInitial) 5%, var(--backgroundColor) 90%);
     }
     h1, h2, h3 {
     	font-family: var(--headerFont);
@@ -122,7 +130,7 @@ const Footer = styled.div`
 // data
 const pageTitle = "Daniel Al-Khrysat - Portfolio";
 const name = "Daniel Al-Khrysat";
-const industry = "Front End Developer";
+const industry = "Front-end Developer";
 const contactLinks = [
 	{"text":"daniel@alkhrysat.com", "url":"mailto:daniel@alkhrysat.com"},
 	{"text":"github","url":"https://github.com/alkhdaniel"},

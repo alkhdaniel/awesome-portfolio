@@ -128,7 +128,16 @@ const Industry = styled.h2`
 
 const Header = ({ name, industry }) => {
 	document.addEventListener('scroll', function(e) {
-		document.documentElement.style.setProperty('--sunPosition',"-"+window.pageYOffset/4+"px")
+		let offset = (((window.pageYOffset/6)-25)*-1);
+		document.documentElement.style.setProperty('--sunPosition',(offset)+"px")
+		var style = window.getComputedStyle(document.documentElement);
+		if (offset > 10)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial1'))
+		else if (offset > 0)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial2'))
+		else if (offset > -10)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial3'))
+		else if (offset > -20)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial4'))
+		else if (offset > -30)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial5'))
+		else if (offset > -40)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial6'))
+		else document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial7'))
 	});
 
 	return (
