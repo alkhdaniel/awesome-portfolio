@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
 	    --titleColor: #f2f2f2;
 	    --textColor: #f2f2f2;
 	    --backgroundColor: #064273;
+	    --sunPosition: 0px;
 	    --padding: 16px;
 	}
 	* {

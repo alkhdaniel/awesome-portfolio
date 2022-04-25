@@ -18,15 +18,24 @@ const Sky = styled.div`
 		position:absolute;
 		width:50px;
 		height:50px;
-		bottom:-25px;
+		bottom:var(--sunPosition);
 		left: calc(50% - 25px);
 		background: white;
 		overflow:hidden;
 	}
 `;
+
+const Title = styled.h1`
+	top:30%;
+	max-height:30%;
+	position:relative;
+	text-align:center;
+	color: var(--headerColor);
+	z-index:3;
+`;
+
 const Water = styled.div`
 	position:relative;
-	/*background: radial-gradient(100px 95% at 50% -20%, #f5bea5 -25%, transparent);*/
 	background: radial-gradient(80% 60% at 50% 0%, #ff846e, transparent);
 	height:30%;
 	overflow:hidden;
@@ -57,29 +66,11 @@ const Water = styled.div`
 	}
 `;
 
-const Title = styled.h1`
-	top:35%;
-	position:relative;
-	text-align:center;
-	color: var(--headerColor);
-	z-index:3;
-`;
 const Name = styled.div`
 	& {
 		font-size:2rem;
 		z-index:3;
 	}
-	/*&:after {
-	  content: "Daniel Al-Khrysat";
-	  position:absolute;
-	  top:200px;
-	  display:flex;
-	  transform:rotateX(180deg);
-	  background-image:
-	    linear-gradient(180deg,rgba(255,255,255,.0) 10%,rgba(255,255,255,.5));
-	  -webkit-background-clip: text;
-	  color: transparent;
-	}*/
 	/*&:before {
 		content: "Daniel Al-Khrysat";
 		white-space: nowrap;
@@ -132,14 +123,16 @@ const Name = styled.div`
 `;
 
 
-
 const Industry = styled.div`
 	font-size:1.5rem
 `;
 
 
-
 const Header = ({ name, industry }) => {
+	document.addEventListener('scroll', function(e) {
+		document.documentElement.style.setProperty('--sunPosition',"-"+window.pageYOffset/4+"px")
+	});
+
 	return (
 		<HeaderContainer>
 			<Sky>
