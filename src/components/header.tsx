@@ -25,7 +25,7 @@ const Sky = styled.div`
 	}
 `;
 
-const Title = styled.h1`
+const Title = styled.div`
 	top:30%;
 	max-height:30%;
 	position:relative;
@@ -66,9 +66,8 @@ const Water = styled.div`
 	}
 `;
 
-const Name = styled.div`
+const Name = styled.h1`
 	& {
-		font-size:2rem;
 		z-index:3;
 	}
 	/*&:before {
@@ -123,8 +122,7 @@ const Name = styled.div`
 `;
 
 
-const Industry = styled.div`
-	font-size:1.5rem
+const Industry = styled.h2`
 `;
 
 
