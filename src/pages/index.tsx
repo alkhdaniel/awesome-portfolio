@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 	    --padding: 16px;
 	}
     html, body {
-    	font-family: Roboto, sans-serif;
+		font-family: Consolas, monaco, monospace;
         margin: 0;
         padding: 0;
         color: var(--textColor);

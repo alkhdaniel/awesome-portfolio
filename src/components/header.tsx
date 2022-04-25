@@ -14,7 +14,6 @@ const Title = styled.h1`
 	max-height:30%;
 	position:relative;
 	text-align:center;
-	font-family: 'Segoe ui', sans-serif;
 	color: var(--headerColor);
 	z-index:3;
 `;
