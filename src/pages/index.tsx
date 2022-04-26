@@ -167,7 +167,7 @@ const contactLinks: string[] = [
 const skills: string[] = ["JavaSript", "React"];
 const about =
 <>
-<p>lorem ipsum</p>
+<p>haha u gay</p>
 <p>Based in Gothenburg, Sweden</p>
 </>;
 
