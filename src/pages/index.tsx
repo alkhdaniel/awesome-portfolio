@@ -18,13 +18,13 @@ const GlobalStyle = createGlobalStyle`
 	    --titleColor: #f2f2f2;
 	    --textColor: #f2f2f2;
 	    --backgroundInitial: #064273;
-	    --backgroundInitial2: #064273;
+	    /*--backgroundInitial2: #064273;
 	    --backgroundInitial2: #093D68;
 	    --backgroundInitial3: #0D385E;
 	    --backgroundInitial4: #103353;
 	    --backgroundInitial5: #132E49;
 	    --backgroundInitial6: #16293E;
-	    --backgroundInitial7: #1A2434;
+	    --backgroundInitial7: #1A2434;*/
 	    --backgroundColor: #1d1f29;
 	    --sunPosition: 25px;
 	    --linkColor: #F0A040;
@@ -140,13 +140,13 @@ const skills = ["JavaSript", "React"];
 
 // markup
 const AwesomePortfolio = () => {
-	const [red, green, blue] = [69, 111, 225]
+	const [red, green, blue] = [6, 66, 115]
 
 	useEffect(() => {
 		const onScroll = () => {
 			const y = 1 + (window.scrollY || window.pageYOffset) / 150
-			const [r, g, b] = [red/y, green/y, blue/y].map(Math.round)
-			document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+			const [r, g, b] = [Math.max(red/y, 29), Math.max(green/y, 31), Math.max(blue/y, 41)].map(Math.round)
+			document.body.style.setProperty('--backgroundInitial', `rgb(${r}, ${g}, ${b})`);
 		}
         window.removeEventListener('scroll', onScroll);
         window.addEventListener('scroll', onScroll, { passive: true });

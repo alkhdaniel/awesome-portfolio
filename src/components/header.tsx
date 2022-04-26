@@ -8,6 +8,7 @@ const HeaderContainer = styled.div`
 `;
 const Sky = styled.div`
 	& {
+	--offsetY: 0;
 	position:relative;
 	z-index:-1;
 	background: linear-gradient(#1c2948 10%, #614973 40%, #c86496 70%, #f5bea5 100%);
@@ -22,7 +23,7 @@ const Sun = styled.div`
 		position:absolute;
 		width:50px;
 		height:50px;
-		bottom:0px;
+		bottom: calc((var(--offsetY)/4) * 1px + 25px);
 		left: calc(50% - 25px);
 		background: white;
 		overflow:hidden;
@@ -30,7 +31,6 @@ const Sun = styled.div`
 
 const Title = styled.div`
 	top:30%;
-	max-height:30%;
 	position:relative;
 	text-align:center;
 	color: var(--headerColor);
@@ -74,6 +74,7 @@ const Name = styled.h1`
 	& {
 		z-index:3;
 		position:relative;
+		bottom: calc(var(--offsetY)/2 * 1px);
 	}
 	/*&:before {
 		content: "Daniel Al-Khrysat";
@@ -129,17 +130,15 @@ const Name = styled.h1`
 
 const Industry = styled.h2`
 	position:relative;
+	bottom: calc(var(--offsetY)/2 * 1px);
 `;
 
 const Header = ({ name, industry }) => {
-	const sunref = useRef(null);
-	const nameref = useRef(null);
-	const industryref = useRef(null);
+	const skyref = useRef(null);
 	useEffect(() => {
 		const onScroll = () => {
-			sunref.current.style.bottom = -window.pageYOffset/4+"px";
-			nameref.current.style.bottom = -window.pageYOffset/2+"px";
-			industryref.current.style.bottom = -window.pageYOffset/2+"px";
+			const offsetY = -window.pageYOffset;
+			skyref.current.style.setProperty('--offsetY', -window.pageYOffset);
 		}
         window.removeEventListener('scroll', onScroll);
         window.addEventListener('scroll', onScroll, { passive: true });
@@ -148,13 +147,13 @@ const Header = ({ name, industry }) => {
 
 	return (
 		<HeaderContainer>
-			<Sky>
+			<Sky ref={skyref}>
 			<StarrySky />
 			<Title>
-				<Name ref={nameref}>{name}</Name>
-				<Industry ref={industryref}>{industry}</Industry>
+				<Name>{name}</Name>
+				<Industry>{industry}</Industry>
 			</Title>
-			<Sun ref={sunref}/>
+			<Sun/>
 			</Sky>
 			<Water />
 		</HeaderContainer>
