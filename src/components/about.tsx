@@ -2,10 +2,13 @@ import React from 'react'
 import styled from "styled-components"
 
 const AboutContainer = styled.div`
-    width: var(--mainWidth);
-    margin:auto;
-    margin-bottom: 128px;
-    padding:var(--padding)
+    & {
+        position:relative;
+        width: var(--mainWidth);
+        margin:auto;
+        margin-bottom: 64px;
+        padding:var(--padding);
+    }
 `;
 const Title = styled.h2`
 `;

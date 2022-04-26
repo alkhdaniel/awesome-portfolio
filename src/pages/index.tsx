@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
 	    --headerGradient1: #614973;
 	    --headerGradient2: #c86496;
 	    --headerGradient3: #f5bea5;
+	    --accentColor: #f0a040;
 	    --waterRadial: #ff846e;
 	    --sunPosition: 25px;
 	    --linkColor: #F0A040;
@@ -53,10 +54,12 @@ const GlobalStyle = createGlobalStyle`
     	letter-spacing:2px;
     }
     h2 {
-    	text-transform: uppercase;
+    	color: #f0a040;
+		text-transform: uppercase;
     	font-size:1.4rem;
     	font-weight:500;
     	letter-spacing:1px;
+    	margin-bottom:64px;
     }
 	a {
 		padding: 0px 0;
