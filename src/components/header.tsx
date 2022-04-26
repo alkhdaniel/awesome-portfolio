@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect }from 'react'
+import React from 'react'
 import styled from "styled-components"
 import StarrySky from "./starrySky"
 
@@ -17,14 +17,14 @@ const Sky = styled.div`
 `;
 const Sun = styled.div`
 		content:" ";
-		box-shadow: 0 0 10px white;
+		box-shadow: 0 0 20px white;
 		border-radius: 50%;
 		position:absolute;
-		width:50px;
-		height:50px;
+		width:100px;
+		height:100px;
 		bottom: 0px;
-		transform: translateY(calc(var(--offsetY)/4 * 1px));
-		left: calc(50% - 25px);
+		transform: translateY(calc(var(--offsetY)/5 * 1px));
+		left: calc(50% - 50px);
 		background: white;
 		overflow:hidden;
 `
@@ -40,7 +40,7 @@ const Title = styled.div`
 
 const Water = styled.div`
 	position:relative;
-	background: radial-gradient(80% 60% at 50% 0%, #ff846e, var(--backgroundInitial));
+	background: radial-gradient(calc(80% - (var(--offsetY)/5*0.8%)) calc(60% - (var(--offsetY)/5*0.6%)) at 50% 0%, #ff846e, var(--backgroundInitial));
 	height:30%;
 	overflow:hidden;
 	z-index:2;
@@ -50,25 +50,12 @@ const Water = styled.div`
 		filter: blur(5px);
 		background: linear-gradient(white, rgba(255, 255, 255, 0));
 		position:absolute;
-		width:50px;
-		height:50px;
-		top:-25px;
-		left: calc(50% - 25px);
+		width:100px;
+		height:100px;
+		top:0px;
+		transform: translateY(calc(var(--offsetY)/5 * -1px));
+		left: calc(50% - 50px);
 		overflow:hidden;
-
-		@keyframes light {
-	  0% {
-	    transform: scaleX(1) translate3d(0, 0, 0);
-	  }
-	  50% {
-	    transform: scaleX(1) translate3d(-2px, 0, 0);
-	  }
-	  100% {
-	    transform: scaleX(1) translate3d(0, 0, 0);
-	  }
-	}
-	animation: light 5s infinite;
-	}
 `;
 
 const Name = styled.h1`
@@ -132,22 +119,19 @@ const Industry = styled.h2`
 	position:relative;
 `;
 
-class Header extends React.Component {
-	render() {
-
-		return (
-			<HeaderContainer>
-				<Sky>
-				<StarrySky />
-				<Title>
-					<Name>{this.props.name}</Name>
-					<Industry>{this.props.industry}</Industry>
-				</Title>
-				<Sun/>
-				</Sky>
-				<Water />
-			</HeaderContainer>
-		)
-	}
+const Header = ({ name, industry }) => {
+	return (
+		<HeaderContainer>
+			<Sky>
+			<StarrySky />
+			<Title>
+				<Name>{name}</Name>
+				<Industry>{industry}</Industry>
+			</Title>
+			<Sun/>
+			</Sky>
+			<Water />
+		</HeaderContainer>
+	)
 }
 export default Header

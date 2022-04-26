@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react"
-import SmoothScroll from "smoothscroll-for-websites"
+import React from "react"
 import Header from "../components/header"
 import About from "../components/about"
 import Contact from "../components/contact"
 import styled, { createGlobalStyle } from "styled-components"
+
 
 // styles
 const GlobalStyle = createGlobalStyle`
