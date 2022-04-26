@@ -10,8 +10,8 @@ const GlobalStyle = createGlobalStyle`
 	/*dark theme*/
 	:root {
 		--offsetY: 0;
-		--font: "Roboto, sans-serif";
-		--headerFont: "Segoe ui, sans-serif";
+		--font: Roboto, sans-serif;
+		--headerFont: Segoe ui, sans-serif;
 		--headerPosition: 0px;
 		--headerSize: ""
 	    --mainWidth: auto;
@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
 		padding:0;
 	}
     html {
+    	font-size:16px;
 		font-family: var(--font);
         color: var(--textColor);
     }
@@ -44,12 +45,14 @@ const GlobalStyle = createGlobalStyle`
     	font-family: var(--headerFont);
     }
     h1 {
-    	font-size:2.5rem;
+    	text-transform: uppercase;
+    	font-size:1.95rem;
     	font-weight:600;
     	letter-spacing:2px;
     }
     h2 {
-    	font-size:1.75rem;
+    	text-transform: uppercase;
+    	font-size:1.4rem;
     	font-weight:500;
     	letter-spacing:1px;
     }
@@ -103,12 +106,21 @@ const GlobalStyle = createGlobalStyle`
 		:root {
 			--mainWidth: 880px;
 		}
+		h1 {
+			font-size:2rem;
+		}
 	}
 
 	@media only screen and (min-width: 1200px) {
 		:root {
 			font-size:18px;
 			--mainWidth: 1024px;
+		}
+		h1 {
+			font-size: 2.5rem;
+		}
+		h2 {
+			font-size: 1.75rem;
 		}
 	}
 
@@ -154,6 +166,14 @@ const contactLinks: string[] = [
 	{"text":"github","url":"https://github.com/alkhdaniel"},
 	{"text":"linkedin","url":"https://www.linkedin.com/in/daniel-alkhrysat/"}]
 const skills: string[] = ["JavaSript", "React"];
+const about =
+<>
+<p>lorem ipsum</p>
+<p>Based in Gothenburg, Sweden</p>
+</>;
+
+
+
 const [red, green, blue]: number = [6, 66, 115]
 const [hg1red, hg1green, hg1blue]: number = [97, 73, 115]
 const [hg2red, hg2green, hg2blue]: number = [200, 100, 150]
@@ -192,7 +212,7 @@ class EasyPortfolio extends React.Component {
 					<title>{pageTitle}</title>
 					<NavBar />
 					<Header name={name} industry={industry}/>
-					<About />
+					<About text={about} />
 					<Contact links={contactLinks} />
 					<Footer />
 				</main>

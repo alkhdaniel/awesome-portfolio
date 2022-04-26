@@ -1,10 +1,7 @@
 const SmoothScroll = (target, speed, smooth) => {
 	if (target === document)
-		target = (document.scrollingElement 
-              || document.documentElement 
-              || document.body.parentNode 
-              || document.body) // cross browser support for document scrolling
-      
+		target = (document.scrollingElement  || document.documentElement  || document.body.parentNode || document.body); // cross browser support for document scrolling
+
 	var moving = false
 	var pos = target.scrollTop
   	var frame = target === document.body 
@@ -16,14 +13,20 @@ const SmoothScroll = (target, speed, smooth) => {
 	target.addEventListener('DOMMouseScroll', scrolled, { passive: false })
 
 	function scrolled(e) {
-		e.preventDefault(); // disable default scrolling
+		// leave early if default action is prevented   
+	    // or it's a zooming event with CTRL 
+	    if (event.defaultPrevented || event.ctrlKey) {
+	        return true;
+	    }
 
 		var delta = normalizeWheelDelta(e)
-
+		if (!moving) { pos=target.scrollTop; }
 		pos += -delta * speed
 		pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)) // limit scrolling
 
 		if (!moving) update()
+
+		e.preventDefault(); // disable default scrolling
 	}
 
 	function normalizeWheelDelta(e){
@@ -43,7 +46,7 @@ const SmoothScroll = (target, speed, smooth) => {
     
 		target.scrollTop += delta
     
-		if (Math.abs(delta) > 0.5)
+		if (Math.abs(delta) > 2)
 			requestFrame(update)
 		else
 			moving = false
