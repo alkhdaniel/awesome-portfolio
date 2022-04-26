@@ -30,9 +30,9 @@ const Sun = styled.div`
 `
 
 const Title = styled.div`
-	top:30%;
+	top:40%;
 	position:relative;
-	transform: translateY(calc(var(--offsetY)/4 * 1px));
+	transform: translateY(calc(var(--offsetY)/2.5 * 1px));
 	text-align:center;
 	color: var(--headerColor);
 	z-index:3;
