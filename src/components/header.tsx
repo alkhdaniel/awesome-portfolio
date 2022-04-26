@@ -3,7 +3,7 @@ import styled from "styled-components"
 import StarrySky from "./starrySky"
 
 const HeaderContainer = styled.div`
-	height:75vh;
+	height:100vh;
 	overflow:hidden;
 `;
 const Sky = styled.div`
@@ -11,7 +11,7 @@ const Sky = styled.div`
 	position:relative;
 	z-index:-1;
 	background: linear-gradient(var(--backgroundInitial) 10%, var(--headerGradient1) 40%, var(--headerGradient2) 70%, var(--headerGradient3) 100%);
-	height:70%;
+	height:calc(70% + (var(--offsetY)/40*1%));
 	overflow:hidden;
 }
 `;
@@ -22,8 +22,8 @@ const Sun = styled.div`
 		position:absolute;
 		width:100px;
 		height:100px;
-		bottom: 0px;
-		transform: translateY(calc(var(--offsetY)/5 * 1px));
+		bottom: -30px;
+		transform: translateY(calc(var(--offsetY)/10 * 1px));
 		left: calc(50% - 50px);
 		background: white;
 		overflow:hidden;
@@ -32,7 +32,7 @@ const Sun = styled.div`
 const Title = styled.div`
 	top:30%;
 	position:relative;
-	transform: translateY(calc(var(--offsetY)/2 * 1px));
+	transform: translateY(calc(var(--offsetY)/4 * 1px));
 	text-align:center;
 	color: var(--headerColor);
 	z-index:3;
@@ -40,8 +40,8 @@ const Title = styled.div`
 
 const Water = styled.div`
 	position:relative;
-	background: radial-gradient(calc(80% - (var(--offsetY)/5*0.8%)) calc(60% - (var(--offsetY)/5*0.6%)) at 50% 0%, #ff846e, var(--backgroundInitial));
-	height:30%;
+	background: radial-gradient(calc(80% - (var(--offsetY)/10*0.8%)) calc(60% - (var(--offsetY)/10*0.6%)) at 50% 0%, #ff846e, var(--backgroundInitial));
+	height:calc(30% - (var(--offsetY)/40*1%));
 	overflow:hidden;
 	z-index:2;
 	&:after {						/*sun reflection*/
@@ -52,8 +52,8 @@ const Water = styled.div`
 		position:absolute;
 		width:100px;
 		height:100px;
-		top:0px;
-		transform: translateY(calc(var(--offsetY)/5 * -1px));
+		top:-30px;
+		transform: translateY(calc(var(--offsetY)/10 * -1px));
 		left: calc(50% - 50px);
 		overflow:hidden;
 `;

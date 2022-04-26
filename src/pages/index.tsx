@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
 	    --titleColor: #f2f2f2;
 	    --textColor: #f2f2f2;
 	    --backgroundInitial: #064273;
+	    --backgroundInitial2: #064273;
 	    --headerGradient1: #614973;
 	    --headerGradient2: #c86496;
 	    --headerGradient3: #f5bea5;
@@ -98,8 +99,6 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 
-
-
     @media only screen and (min-width: 900px) {
 		:root {
 			--mainWidth: 880px;
@@ -111,6 +110,27 @@ const GlobalStyle = createGlobalStyle`
 			font-size:18px;
 			--mainWidth: 1024px;
 		}
+	}
+
+	/* Scrollbar */
+	/* width */
+	::-webkit-scrollbar {
+	  width: 10px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+	  background: #303240;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+	  background: #999;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+	  background: #555;
 	}
  `
 
@@ -151,7 +171,7 @@ class EasyPortfolio extends React.Component {
 	}
 
 	onScroll = () => {
-		const y = 1 + (window.scrollY || window.pageYOffset) / 150
+		const y = 1 + (window.scrollY || window.pageYOffset) / 500
 		const [r, g, b] = [Math.max(red/y, 29), Math.max(green/y, 31), Math.max(blue/y, 41)].map(Math.round)
 		const [r1, g1, b1] = [Math.max(hg1red/y, 29), Math.max(hg1green/y, 31), Math.max(hg1blue/y, 41)].map(Math.round)
 		const [r2, g2, b2] = [Math.max(hg2red/y, 29), Math.max(hg2green/y, 31), Math.max(hg2blue/y, 41)].map(Math.round)

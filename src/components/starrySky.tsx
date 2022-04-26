@@ -20,13 +20,13 @@ const StarrySky = props => {
 	window.onresize = updateCanvasSize;
 	function updateCanvasSize() {
 		canvas.width = document.body.offsetWidth;
-		canvas.height = canvas.parentElement.clientHeight;
+		canvas.height = canvas.parentElement.parentElement.clientHeight;
 	}
 	updateCanvasSize();
 
 	let arrStars = []
 	let starCount;
-	canvas.width < 800 ? starCount = 10 : starCount = 20;
+	canvas.width < 800 ? starCount = 15 : starCount = 30;
 
 	function Star(x,y,size,sizeChangeSpeed){
 	    this.x = x;
