@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 
-const AboutContainer = styled.div`
+const ProjectsContainer = styled.div`
     width: var(--mainWidth);
     margin:auto;
     margin-bottom: 128px;
@@ -14,14 +14,12 @@ const TextContainer = styled.div`
 
 
 
-const About = ({ text }) => {
+const Projects = ({ projects }) => {
   return (
-    <AboutContainer>
-    <Title>About</Title>
-    <TextContainer>
-    {text}
-    </TextContainer>
-    </AboutContainer>
+    <ProjectsContainer>
+        <Title>Projects</Title>
+        <TextContainer>{projects}</TextContainer>
+    </ProjectsContainer>
     )
 }
-export default About
+export default Projects

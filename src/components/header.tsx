@@ -23,7 +23,7 @@ const Sun = styled.div`
 		width:100px;
 		height:100px;
 		bottom: -30px;
-		transform: translateY(calc(var(--offsetY)/10 * 1px));
+		transform: translate3d(0, calc(var(--offsetY)/10 * 1px), 0);
 		left: calc(50% - 50px);
 		background: white;
 		overflow:hidden;
@@ -32,7 +32,7 @@ const Sun = styled.div`
 const Title = styled.div`
 	top:40%;
 	position:relative;
-	transform: translateY(calc(var(--offsetY)/2.5 * 1px));
+	transform: translate3d(0, calc(var(--offsetY)/2.5 * 1px), 0);
 	text-align:center;
 	color: var(--headerColor);
 	z-index:3;
@@ -53,7 +53,7 @@ const Water = styled.div`
 		width:100px;
 		height:100px;
 		top:-30px;
-		transform: translateY(calc(var(--offsetY)/10 * -1px));
+		transform: translate3d(0, calc(var(--offsetY)/10 * -1px), 0);
 		left: calc(50% - 50px);
 		overflow:hidden;
 `;

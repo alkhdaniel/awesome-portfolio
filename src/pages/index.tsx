@@ -1,6 +1,7 @@
 import React from "react"
 import Header from "../components/header"
 import About from "../components/about"
+import Projects from "../components/projects"
 import Contact from "../components/contact"
 import SmoothScroll from "../components/SmoothScroll"
 import styled, { createGlobalStyle } from "styled-components"
@@ -41,7 +42,8 @@ const GlobalStyle = createGlobalStyle`
     body {
     	background: var(--backgroundInitial);
     }
-    h1, h2, h3 {
+    h1, h2 {
+    	text-align:center;
     	font-family: var(--headerFont);
     }
     h1 {
@@ -146,21 +148,15 @@ const GlobalStyle = createGlobalStyle`
 	}
  `
 
-const NavBar = styled.div`
-`;
-const Content = styled.div`
-	width: var(--mainWidth);
-	margin: auto;
-	text-align: center;
-`;
-const Footer = styled.div`
-`;
-
 
 // data
 const pageTitle: string = "Daniel Al-Khrysat - Portfolio";
 const name: string = "Daniel Al-Khrysat";
 const industry: string = "Front-end Developer";
+const projects =
+<>
+<p>lol</p>
+</>;
 const contactLinks: string[] = [
 	{"text":"daniel@alkhrysat.com", "url":"mailto:daniel@alkhrysat.com"},
 	{"text":"github","url":"https://github.com/alkhdaniel"},
@@ -210,11 +206,10 @@ class EasyPortfolio extends React.Component {
 				<GlobalStyle />
 				<main>
 					<title>{pageTitle}</title>
-					<NavBar />
 					<Header name={name} industry={industry}/>
 					<About text={about} />
+					<Projects projects={projects} />
 					<Contact links={contactLinks} />
-					<Footer />
 				</main>
 			</>
 		)
