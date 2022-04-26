@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import SmoothScroll from "smoothscroll-for-websites"
 import Header from "../components/header"
 import About from "../components/about"
@@ -38,7 +38,9 @@ const GlobalStyle = createGlobalStyle`
     html {
 		font-family: var(--font);
         color: var(--textColor);
-        background: var(--backgroundInitial);
+    }
+    body {
+    	background: var(--backgroundInitial);
     }
     h1, h2, h3 {
     	font-family: var(--headerFont);
@@ -138,6 +140,18 @@ const skills = ["JavaSript", "React"];
 
 // markup
 const AwesomePortfolio = () => {
+	const [red, green, blue] = [69, 111, 225]
+
+	useEffect(() => {
+		const onScroll = () => {
+			const y = 1 + (window.scrollY || window.pageYOffset) / 150
+			const [r, g, b] = [red/y, green/y, blue/y].map(Math.round)
+			document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+		}
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+	}, []);
 	return (
 		<>
 			<GlobalStyle />

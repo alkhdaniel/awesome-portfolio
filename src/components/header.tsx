@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react'
+import React, { useRef, useState, useEffect }from 'react'
 import styled from "styled-components"
 import StarrySky from "./starrySky"
 
@@ -12,8 +12,10 @@ const Sky = styled.div`
 	z-index:-1;
 	background: linear-gradient(#1c2948 10%, #614973 40%, #c86496 70%, #f5bea5 100%);
 	height:70%;
-	overflow:hidden;}
-	&:after {						/*sun*/
+	overflow:hidden;
+}
+`;
+const Sun = styled.div`
 		content:" ";
 		box-shadow: 0 0 10px white;
 		border-radius: 50%;
@@ -21,12 +23,10 @@ const Sky = styled.div`
 		width:50px;
 		height:50px;
 		bottom:0px;
-		transform: translateY(${props => props.top/4}px);
 		left: calc(50% - 25px);
 		background: white;
 		overflow:hidden;
-	}
-`;
+`
 
 const Title = styled.div`
 	top:30%;
@@ -73,7 +73,6 @@ const Water = styled.div`
 const Name = styled.h1`
 	& {
 		z-index:3;
-		transform: translateY(${props => props.top/2}px);
 		position:relative;
 	}
 	/*&:before {
@@ -129,14 +128,19 @@ const Name = styled.h1`
 
 
 const Industry = styled.h2`
-	transform: translateY(${props => props.top/2}px);
 	position:relative;
 `;
 
 const Header = ({ name, industry }) => {
-	var [offsetY, setOffsetY] = useState("0px");
+	const sunref = useRef(null);
+	const nameref = useRef(null);
+	const industryref = useRef(null);
 	useEffect(() => {
-		const onScroll = () => setOffsetY(window.pageYOffset);
+		const onScroll = () => {
+			sunref.current.style.bottom = -window.pageYOffset/4+"px";
+			nameref.current.style.bottom = -window.pageYOffset/2+"px";
+			industryref.current.style.bottom = -window.pageYOffset/2+"px";
+		}
         window.removeEventListener('scroll', onScroll);
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
@@ -144,12 +148,13 @@ const Header = ({ name, industry }) => {
 
 	return (
 		<HeaderContainer>
-			<Sky top={offsetY}>
-			{/*<StarrySky />*/}
+			<Sky>
+			<StarrySky />
 			<Title>
-				<Name top={offsetY}>{name}</Name>
-				<Industry top={offsetY}>{industry}</Industry>
+				<Name ref={nameref}>{name}</Name>
+				<Industry ref={industryref}>{industry}</Industry>
 			</Title>
+			<Sun ref={sunref}/>
 			</Sky>
 			<Water />
 		</HeaderContainer>
