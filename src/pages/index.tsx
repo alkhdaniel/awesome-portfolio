@@ -2,6 +2,7 @@ import React from "react"
 import Header from "../components/header"
 import About from "../components/about"
 import Contact from "../components/contact"
+import SmoothScroll from "../components/SmoothScroll"
 import styled, { createGlobalStyle } from "styled-components"
 
 // styles
@@ -145,25 +146,25 @@ const Footer = styled.div`
 
 
 // data
-const pageTitle = "Daniel Al-Khrysat - Portfolio";
-const name = "Daniel Al-Khrysat";
-const industry = "Front-end Developer";
-const contactLinks = [
+const pageTitle: string = "Daniel Al-Khrysat - Portfolio";
+const name: string = "Daniel Al-Khrysat";
+const industry: string = "Front-end Developer";
+const contactLinks: string[] = [
 	{"text":"daniel@alkhrysat.com", "url":"mailto:daniel@alkhrysat.com"},
 	{"text":"github","url":"https://github.com/alkhdaniel"},
 	{"text":"linkedin","url":"https://www.linkedin.com/in/daniel-alkhrysat/"}]
-const skills = ["JavaSript", "React"];
-const [red, green, blue] = [6, 66, 115]
-const [hg1red, hg1green, hg1blue] = [97, 73, 115]
-const [hg2red, hg2green, hg2blue] = [200, 100, 150]
-const [hg3red, hg3green, hg3blue] = [245, 190, 165]
-const [hg4red, hg4green, hg4blue] = [6, 66, 115]
+const skills: string[] = ["JavaSript", "React"];
+const [red, green, blue]: number = [6, 66, 115]
+const [hg1red, hg1green, hg1blue]: number = [97, 73, 115]
+const [hg2red, hg2green, hg2blue]: number = [200, 100, 150]
+const [hg3red, hg3green, hg3blue]: number = [245, 190, 165]
+const [hg4red, hg4green, hg4blue]: number = [6, 66, 115]
 
 class EasyPortfolio extends React.Component {
 
 	componentDidMount() {
 		window.addEventListener('scroll', this.onScroll);
-		new this.SmoothScroll(document,150,7)
+		SmoothScroll(document,150,7)
 	}
 
 	componentWillUnmount() {
@@ -172,81 +173,15 @@ class EasyPortfolio extends React.Component {
 
 	onScroll = () => {
 		const y = 1 + (window.scrollY || window.pageYOffset) / 500
-		const [r, g, b] = [Math.max(red/y, 29), Math.max(green/y, 31), Math.max(blue/y, 41)].map(Math.round)
-		const [r1, g1, b1] = [Math.max(hg1red/y, 29), Math.max(hg1green/y, 31), Math.max(hg1blue/y, 41)].map(Math.round)
-		const [r2, g2, b2] = [Math.max(hg2red/y, 29), Math.max(hg2green/y, 31), Math.max(hg2blue/y, 41)].map(Math.round)
-		const [r3, g3, b3] = [Math.max(hg3red/y, 29), Math.max(hg3green/y, 31), Math.max(hg3blue/y, 41)].map(Math.round)
+		const [r, g, b]: number = [Math.max(red/y, 29), Math.max(green/y, 31), Math.max(blue/y, 41)].map(Math.round)
+		const [r1, g1, b1]: number = [Math.max(hg1red/y, 29), Math.max(hg1green/y, 31), Math.max(hg1blue/y, 41)].map(Math.round)
+		const [r2, g2, b2]: number = [Math.max(hg2red/y, 29), Math.max(hg2green/y, 31), Math.max(hg2blue/y, 41)].map(Math.round)
+		const [r3, g3, b3]: number = [Math.max(hg3red/y, 29), Math.max(hg3green/y, 31), Math.max(hg3blue/y, 41)].map(Math.round)
 		document.body.style.setProperty('--backgroundInitial', `rgb(${r}, ${g}, ${b})`);
 		document.documentElement.style.setProperty('--headerGradient1', `rgb(${r1}, ${g1}, ${b1})`);
 		document.documentElement.style.setProperty('--headerGradient2', `rgb(${r2}, ${g2}, ${b2})`);
 		document.documentElement.style.setProperty('--headerGradient3', `rgb(${r3}, ${g3}, ${b3})`);
 		document.documentElement.style.setProperty('--offsetY', window.pageYOffset);
-	}
-
-
-	SmoothScroll = (target, speed, smooth) => {
-		if (target === document)
-			target = (document.scrollingElement 
-	              || document.documentElement 
-	              || document.body.parentNode 
-	              || document.body) // cross browser support for document scrolling
-	      
-		var moving = false
-		var pos = target.scrollTop
-	  	var frame = target === document.body 
-	              && document.documentElement 
-	              ? document.documentElement 
-	              : target // safari is the new IE
-	  
-		target.addEventListener('mousewheel', scrolled, { passive: false })
-		target.addEventListener('DOMMouseScroll', scrolled, { passive: false })
-
-		function scrolled(e) {
-			e.preventDefault(); // disable default scrolling
-
-			var delta = normalizeWheelDelta(e)
-
-			pos += -delta * speed
-			pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)) // limit scrolling
-
-			if (!moving) update()
-		}
-
-		function normalizeWheelDelta(e){
-			if(e.detail){
-				if(e.wheelDelta)
-					return e.wheelDelta/e.detail/40 * (e.detail>0 ? 1 : -1) // Opera
-				else
-					return -e.detail/3 // Firefox
-			}else
-				return e.wheelDelta/120 // IE,Safari,Chrome
-		}
-
-		function update() {
-			moving = true
-	    
-			var delta = (pos - target.scrollTop) / smooth
-	    
-			target.scrollTop += delta
-	    
-			if (Math.abs(delta) > 0.5)
-				requestFrame(update)
-			else
-				moving = false
-		}
-
-		var requestFrame = function() { // requestAnimationFrame cross browser
-			return (
-				window.requestAnimationFrame ||
-				window.webkitRequestAnimationFrame ||
-				window.mozRequestAnimationFrame ||
-				window.oRequestAnimationFrame ||
-				window.msRequestAnimationFrame ||
-				function(func) {
-					window.setTimeout(func, 1000 / 50);
-				}
-			);
-		}()
 	}
 
 	render() {

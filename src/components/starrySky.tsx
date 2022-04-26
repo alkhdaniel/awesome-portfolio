@@ -25,7 +25,7 @@ const StarrySky = props => {
 	updateCanvasSize();
 
 	let arrStars = []
-	let starCount;
+	let starCount: number;
 	canvas.width < 800 ? starCount = 15 : starCount = 30;
 
 	function Star(x,y,size,sizeChangeSpeed){
