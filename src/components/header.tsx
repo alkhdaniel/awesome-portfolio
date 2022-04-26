@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect }from 'react'
 import styled from "styled-components"
 import StarrySky from "./starrySky"
 
@@ -9,7 +9,6 @@ const HeaderContainer = styled.div`
 const Sky = styled.div`
 	& {
 	position:relative;
-	top:var(--headerPosition);
 	z-index:-1;
 	background: linear-gradient(#1c2948 10%, #614973 40%, #c86496 70%, #f5bea5 100%);
 	height:70%;
@@ -21,7 +20,8 @@ const Sky = styled.div`
 		position:absolute;
 		width:50px;
 		height:50px;
-		bottom:var(--sunPosition);
+		bottom:0px;
+		transform: translateY(${props => props.top/4}px);
 		left: calc(50% - 25px);
 		background: white;
 		overflow:hidden;
@@ -73,6 +73,8 @@ const Water = styled.div`
 const Name = styled.h1`
 	& {
 		z-index:3;
+		transform: translateY(${props => props.top/2}px);
+		position:relative;
 	}
 	/*&:before {
 		content: "Daniel Al-Khrysat";
@@ -127,32 +129,26 @@ const Name = styled.h1`
 
 
 const Industry = styled.h2`
+	transform: translateY(${props => props.top/2}px);
+	position:relative;
 `;
 
-
 const Header = ({ name, industry }) => {
-	document.addEventListener('scroll', function(e) {
-		let offset = window.pageYOffset;
-		document.documentElement.style.setProperty('--sunPosition',(((offset/4)+25))+"px")
-		document.documentElement.style.setProperty('--headerPosition',(offset/2)+"px")
-		var style = window.getComputedStyle(document.documentElement);
-		if (offset < 50)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial1'))
-		else if (offset < 100)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial2'))
-		else if (offset < 150)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial3'))
-		else if (offset < 200)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial4'))
-		else if (offset < 250)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial5'))
-		else if (offset < 300)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial6'))
-		else if (offset < 350)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial7'))
-		else document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundColor'))
-	});
+	var [offsetY, setOffsetY] = useState("0px");
+	useEffect(() => {
+		const onScroll = () => setOffsetY(window.pageYOffset);
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+	}, []);
 
 	return (
 		<HeaderContainer>
-			<Sky>
-			<StarrySky />
+			<Sky top={offsetY}>
+			{/*<StarrySky />*/}
 			<Title>
-				<Name>{name}</Name>
-				<Industry>{industry}</Industry>
+				<Name top={offsetY}>{name}</Name>
+				<Industry top={offsetY}>{industry}</Industry>
 			</Title>
 			</Sky>
 			<Water />

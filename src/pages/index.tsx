@@ -1,4 +1,5 @@
 import React from "react"
+import SmoothScroll from "smoothscroll-for-websites"
 import Header from "../components/header"
 import About from "../components/about"
 import Contact from "../components/contact"
@@ -11,9 +12,6 @@ const GlobalStyle = createGlobalStyle`
 		--font: "Roboto, sans-serif";
 		--headerFont: "Segoe ui, sans-serif";
 		--headerPosition: 0px;
-		--base-scale:calc(100vw / 150);
-		--h1Size: max(2rem, min(3.6rem, calc(var(--base-scale) * 4)));
-		--h2Size: max(1.5rem, min(2.75rem, calc(var(--base-scale) * 3)));
 		--headerSize: ""
 	    --mainWidth: auto;
 	    --headerColor: #dadbdc;
@@ -46,12 +44,12 @@ const GlobalStyle = createGlobalStyle`
     	font-family: var(--headerFont);
     }
     h1 {
-    	font-size:var(--h1Size);
+    	font-size:2.5rem;
     	font-weight:600;
     	letter-spacing:2px;
     }
     h2 {
-    	font-size:var(--h2Size);
+    	font-size:1.75rem;
     	font-weight:500;
     	letter-spacing:1px;
     }
