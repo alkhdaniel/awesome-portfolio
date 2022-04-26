@@ -4,31 +4,35 @@ import StarrySky from "./starrySky"
 
 const HeaderContainer = styled.div`
 	height:75vh;
+	overflow:hidden;
 `;
 const Sky = styled.div`
 	& {
 	position:relative;
-	background: linear-gradient(#1c2948 10%, #614973 40%, #c86496 70%, #f5bea5 100%);
+	z-index:-1;
+	background: linear-gradient(var(--backgroundInitial) 10%, var(--headerGradient1) 40%, var(--headerGradient2) 70%, var(--headerGradient3) 100%);
 	height:70%;
-	overflow:hidden;}
-	&:after {						/*sun*/
+	overflow:hidden;
+}
+`;
+const Sun = styled.div`
 		content:" ";
-		box-shadow: 0 0 10px white;
+		box-shadow: 0 0 20px white;
 		border-radius: 50%;
 		position:absolute;
-		width:50px;
-		height:50px;
-		bottom:var(--sunPosition);
-		left: calc(50% - 25px);
+		width:100px;
+		height:100px;
+		bottom: 0px;
+		transform: translateY(calc(var(--offsetY)/5 * 1px));
+		left: calc(50% - 50px);
 		background: white;
 		overflow:hidden;
-	}
-`;
+`
 
 const Title = styled.div`
 	top:30%;
-	max-height:30%;
 	position:relative;
+	transform: translateY(calc(var(--offsetY)/2 * 1px));
 	text-align:center;
 	color: var(--headerColor);
 	z-index:3;
@@ -36,39 +40,28 @@ const Title = styled.div`
 
 const Water = styled.div`
 	position:relative;
-	background: radial-gradient(80% 60% at 50% 0%, #ff846e, transparent);
+	background: radial-gradient(calc(80% - (var(--offsetY)/5*0.8%)) calc(60% - (var(--offsetY)/5*0.6%)) at 50% 0%, #ff846e, var(--backgroundInitial));
 	height:30%;
 	overflow:hidden;
+	z-index:2;
 	&:after {						/*sun reflection*/
 		content:" ";
 		border-radius: 50%;
 		filter: blur(5px);
 		background: linear-gradient(white, rgba(255, 255, 255, 0));
 		position:absolute;
-		width:50px;
-		height:50px;
-		top:-25px;
-		left: calc(50% - 25px);
+		width:100px;
+		height:100px;
+		top:0px;
+		transform: translateY(calc(var(--offsetY)/5 * -1px));
+		left: calc(50% - 50px);
 		overflow:hidden;
-
-		@keyframes light {
-	  0% {
-	    transform: scaleX(1) translate3d(0, 0, 0);
-	  }
-	  50% {
-	    transform: scaleX(1) translate3d(-2px, 0, 0);
-	  }
-	  100% {
-	    transform: scaleX(1) translate3d(0, 0, 0);
-	  }
-	}
-	animation: light 5s infinite;
-	}
 `;
 
 const Name = styled.h1`
 	& {
 		z-index:3;
+		position:relative;
 	}
 	/*&:before {
 		content: "Daniel Al-Khrysat";
@@ -123,23 +116,10 @@ const Name = styled.h1`
 
 
 const Industry = styled.h2`
+	position:relative;
 `;
 
-
 const Header = ({ name, industry }) => {
-	document.addEventListener('scroll', function(e) {
-		let offset = (((window.pageYOffset/6)-25)*-1);
-		document.documentElement.style.setProperty('--sunPosition',(offset)+"px")
-		var style = window.getComputedStyle(document.documentElement);
-		if (offset > 10)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial1'))
-		else if (offset > 0)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial2'))
-		else if (offset > -10)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial3'))
-		else if (offset > -20)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial4'))
-		else if (offset > -30)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial5'))
-		else if (offset > -40)	document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial6'))
-		else document.documentElement.style.setProperty('--backgroundInitial', style.getPropertyValue('--backgroundInitial7'))
-	});
-
 	return (
 		<HeaderContainer>
 			<Sky>
@@ -148,6 +128,7 @@ const Header = ({ name, industry }) => {
 				<Name>{name}</Name>
 				<Industry>{industry}</Industry>
 			</Title>
+			<Sun/>
 			</Sky>
 			<Water />
 		</HeaderContainer>

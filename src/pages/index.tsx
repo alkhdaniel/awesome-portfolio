@@ -4,29 +4,25 @@ import About from "../components/about"
 import Contact from "../components/contact"
 import styled, { createGlobalStyle } from "styled-components"
 
+
 // styles
 const GlobalStyle = createGlobalStyle`
 	/*dark theme*/
 	:root {
+		--offsetY: 0;
 		--font: "Roboto, sans-serif";
 		--headerFont: "Segoe ui, sans-serif";
-		--base-scale:calc(100vw / 150);
-		--h1Size: max(2rem, min(3.6rem, calc(var(--base-scale) * 4)));
-		--h2Size: max(1.5rem, min(2.75rem, calc(var(--base-scale) * 3)));
+		--headerPosition: 0px;
 		--headerSize: ""
 	    --mainWidth: auto;
 	    --headerColor: #dadbdc;
 	    --titleColor: #f2f2f2;
 	    --textColor: #f2f2f2;
 	    --backgroundInitial: #064273;
-	    --backgroundInitial2: #064273;
-	    --backgroundInitial2: #093D68;
-	    --backgroundInitial3: #0D385E;
-	    --backgroundInitial4: #103353;
-	    --backgroundInitial5: #132E49;
-	    --backgroundInitial6: #16293E;
-	    --backgroundInitial7: #1A2434;
-	    --backgroundColor: #1d1f29;
+	    --headerGradient1: #614973;
+	    --headerGradient2: #c86496;
+	    --headerGradient3: #f5bea5;
+	    --waterRadial: #ff846e;
 	    --sunPosition: 25px;
 	    --linkColor: #F0A040;
 	    --padding: 16px;
@@ -39,18 +35,20 @@ const GlobalStyle = createGlobalStyle`
     html {
 		font-family: var(--font);
         color: var(--textColor);
-        background: linear-gradient(var(--backgroundInitial) 5%, var(--backgroundColor) 90%);
+    }
+    body {
+    	background: var(--backgroundInitial);
     }
     h1, h2, h3 {
     	font-family: var(--headerFont);
     }
     h1 {
-    	font-size:var(--h1Size);
+    	font-size:2.5rem;
     	font-weight:600;
     	letter-spacing:2px;
     }
     h2 {
-    	font-size:var(--h2Size);
+    	font-size:1.75rem;
     	font-weight:500;
     	letter-spacing:1px;
     }
@@ -136,22 +134,50 @@ const contactLinks = [
 	{"text":"github","url":"https://github.com/alkhdaniel"},
 	{"text":"linkedin","url":"https://www.linkedin.com/in/daniel-alkhrysat/"}]
 const skills = ["JavaSript", "React"];
+const [red, green, blue] = [6, 66, 115]
+const [hg1red, hg1green, hg1blue] = [97, 73, 115]
+const [hg2red, hg2green, hg2blue] = [200, 100, 150]
+const [hg3red, hg3green, hg3blue] = [245, 190, 165]
+const [hg4red, hg4green, hg4blue] = [6, 66, 115]
 
-// markup
-const AwesomePortfolio = () => {
-	return (
-		<>
-			<GlobalStyle />
-			<main>
-				<title>{pageTitle}</title>
-				<NavBar />
-				<Header name={name} industry={industry}/>
-				<About />
-				<Contact links={contactLinks} />
-				<Footer />
-			</main>
-		</>
-	)
+class EasyPortfolio extends React.Component {
+
+	componentDidMount() {
+		window.addEventListener('scroll', this.onScroll);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.onScroll);
+	}
+
+	onScroll = () => {
+		const y = 1 + (window.scrollY || window.pageYOffset) / 150
+		const [r, g, b] = [Math.max(red/y, 29), Math.max(green/y, 31), Math.max(blue/y, 41)].map(Math.round)
+		const [r1, g1, b1] = [Math.max(hg1red/y, 29), Math.max(hg1green/y, 31), Math.max(hg1blue/y, 41)].map(Math.round)
+		const [r2, g2, b2] = [Math.max(hg2red/y, 29), Math.max(hg2green/y, 31), Math.max(hg2blue/y, 41)].map(Math.round)
+		const [r3, g3, b3] = [Math.max(hg3red/y, 29), Math.max(hg3green/y, 31), Math.max(hg3blue/y, 41)].map(Math.round)
+		document.body.style.setProperty('--backgroundInitial', `rgb(${r}, ${g}, ${b})`);
+		document.documentElement.style.setProperty('--headerGradient1', `rgb(${r1}, ${g1}, ${b1})`);
+		document.documentElement.style.setProperty('--headerGradient2', `rgb(${r2}, ${g2}, ${b2})`);
+		document.documentElement.style.setProperty('--headerGradient3', `rgb(${r3}, ${g3}, ${b3})`);
+		document.documentElement.style.setProperty('--offsetY', window.pageYOffset);
+	}
+
+	render() {
+		return (
+			<>
+				<GlobalStyle />
+				<main>
+					<title>{pageTitle}</title>
+					<NavBar />
+					<Header name={name} industry={industry}/>
+					<About />
+					<Contact links={contactLinks} />
+					<Footer />
+				</main>
+			</>
+		)
+	}
 }
 
-export default AwesomePortfolio
+export default EasyPortfolio
