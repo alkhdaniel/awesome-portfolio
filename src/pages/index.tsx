@@ -9,6 +9,7 @@ import styled, { createGlobalStyle } from "styled-components"
 const GlobalStyle = createGlobalStyle`
 	/*dark theme*/
 	:root {
+		--offsetY: 0;
 		--font: "Roboto, sans-serif";
 		--headerFont: "Segoe ui, sans-serif";
 		--headerPosition: 0px;
@@ -18,14 +19,10 @@ const GlobalStyle = createGlobalStyle`
 	    --titleColor: #f2f2f2;
 	    --textColor: #f2f2f2;
 	    --backgroundInitial: #064273;
-	    /*--backgroundInitial2: #064273;
-	    --backgroundInitial2: #093D68;
-	    --backgroundInitial3: #0D385E;
-	    --backgroundInitial4: #103353;
-	    --backgroundInitial5: #132E49;
-	    --backgroundInitial6: #16293E;
-	    --backgroundInitial7: #1A2434;*/
-	    --backgroundColor: #1d1f29;
+	    --headerGradient1: #614973;
+	    --headerGradient2: #c86496;
+	    --headerGradient3: #f5bea5;
+	    --waterRadial: #ff846e;
 	    --sunPosition: 25px;
 	    --linkColor: #F0A040;
 	    --padding: 16px;
@@ -137,34 +134,50 @@ const contactLinks = [
 	{"text":"github","url":"https://github.com/alkhdaniel"},
 	{"text":"linkedin","url":"https://www.linkedin.com/in/daniel-alkhrysat/"}]
 const skills = ["JavaSript", "React"];
+const [red, green, blue] = [6, 66, 115]
+const [hg1red, hg1green, hg1blue] = [97, 73, 115]
+const [hg2red, hg2green, hg2blue] = [200, 100, 150]
+const [hg3red, hg3green, hg3blue] = [245, 190, 165]
+const [hg4red, hg4green, hg4blue] = [6, 66, 115]
 
-// markup
-const AwesomePortfolio = () => {
-	const [red, green, blue] = [6, 66, 115]
+class EasyPortfolio extends React.Component {
 
-	useEffect(() => {
-		const onScroll = () => {
-			const y = 1 + (window.scrollY || window.pageYOffset) / 150
-			const [r, g, b] = [Math.max(red/y, 29), Math.max(green/y, 31), Math.max(blue/y, 41)].map(Math.round)
-			document.body.style.setProperty('--backgroundInitial', `rgb(${r}, ${g}, ${b})`);
-		}
-        window.removeEventListener('scroll', onScroll);
-        window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
-	}, []);
-	return (
-		<>
-			<GlobalStyle />
-			<main>
-				<title>{pageTitle}</title>
-				<NavBar />
-				<Header name={name} industry={industry}/>
-				<About />
-				<Contact links={contactLinks} />
-				<Footer />
-			</main>
-		</>
-	)
+	componentDidMount() {
+		window.addEventListener('scroll', this.onScroll);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.onScroll);
+	}
+
+	onScroll = () => {
+		const y = 1 + (window.scrollY || window.pageYOffset) / 150
+		const [r, g, b] = [Math.max(red/y, 29), Math.max(green/y, 31), Math.max(blue/y, 41)].map(Math.round)
+		const [r1, g1, b1] = [Math.max(hg1red/y, 29), Math.max(hg1green/y, 31), Math.max(hg1blue/y, 41)].map(Math.round)
+		const [r2, g2, b2] = [Math.max(hg2red/y, 29), Math.max(hg2green/y, 31), Math.max(hg2blue/y, 41)].map(Math.round)
+		const [r3, g3, b3] = [Math.max(hg3red/y, 29), Math.max(hg3green/y, 31), Math.max(hg3blue/y, 41)].map(Math.round)
+		document.body.style.setProperty('--backgroundInitial', `rgb(${r}, ${g}, ${b})`);
+		document.documentElement.style.setProperty('--headerGradient1', `rgb(${r1}, ${g1}, ${b1})`);
+		document.documentElement.style.setProperty('--headerGradient2', `rgb(${r2}, ${g2}, ${b2})`);
+		document.documentElement.style.setProperty('--headerGradient3', `rgb(${r3}, ${g3}, ${b3})`);
+		document.documentElement.style.setProperty('--offsetY', window.pageYOffset);
+	}
+
+	render() {
+		return (
+			<>
+				<GlobalStyle />
+				<main>
+					<title>{pageTitle}</title>
+					<NavBar />
+					<Header name={name} industry={industry}/>
+					<About />
+					<Contact links={contactLinks} />
+					<Footer />
+				</main>
+			</>
+		)
+	}
 }
 
-export default AwesomePortfolio
+export default EasyPortfolio

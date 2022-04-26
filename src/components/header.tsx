@@ -8,10 +8,9 @@ const HeaderContainer = styled.div`
 `;
 const Sky = styled.div`
 	& {
-	--offsetY: 0;
 	position:relative;
 	z-index:-1;
-	background: linear-gradient(#1c2948 10%, #614973 40%, #c86496 70%, #f5bea5 100%);
+	background: linear-gradient(var(--backgroundInitial) 10%, var(--headerGradient1) 40%, var(--headerGradient2) 70%, var(--headerGradient3) 100%);
 	height:70%;
 	overflow:hidden;
 }
@@ -23,7 +22,8 @@ const Sun = styled.div`
 		position:absolute;
 		width:50px;
 		height:50px;
-		bottom: calc((var(--offsetY)/4) * 1px + 25px);
+		bottom: 0px;
+		transform: translateY(calc(var(--offsetY)/4 * 1px));
 		left: calc(50% - 25px);
 		background: white;
 		overflow:hidden;
@@ -32,6 +32,7 @@ const Sun = styled.div`
 const Title = styled.div`
 	top:30%;
 	position:relative;
+	transform: translateY(calc(var(--offsetY)/2 * 1px));
 	text-align:center;
 	color: var(--headerColor);
 	z-index:3;
@@ -74,7 +75,6 @@ const Name = styled.h1`
 	& {
 		z-index:3;
 		position:relative;
-		bottom: calc(var(--offsetY)/2 * 1px);
 	}
 	/*&:before {
 		content: "Daniel Al-Khrysat";
@@ -130,33 +130,24 @@ const Name = styled.h1`
 
 const Industry = styled.h2`
 	position:relative;
-	bottom: calc(var(--offsetY)/2 * 1px);
 `;
 
-const Header = ({ name, industry }) => {
-	const skyref = useRef(null);
-	useEffect(() => {
-		const onScroll = () => {
-			const offsetY = -window.pageYOffset;
-			skyref.current.style.setProperty('--offsetY', -window.pageYOffset);
-		}
-        window.removeEventListener('scroll', onScroll);
-        window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
-	}, []);
+class Header extends React.Component {
+	render() {
 
-	return (
-		<HeaderContainer>
-			<Sky ref={skyref}>
-			<StarrySky />
-			<Title>
-				<Name>{name}</Name>
-				<Industry>{industry}</Industry>
-			</Title>
-			<Sun/>
-			</Sky>
-			<Water />
-		</HeaderContainer>
-	)
+		return (
+			<HeaderContainer>
+				<Sky>
+				<StarrySky />
+				<Title>
+					<Name>{this.props.name}</Name>
+					<Industry>{this.props.industry}</Industry>
+				</Title>
+				<Sun/>
+				</Sky>
+				<Water />
+			</HeaderContainer>
+		)
+	}
 }
 export default Header
