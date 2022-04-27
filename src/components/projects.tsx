@@ -75,6 +75,15 @@ const Dot = styled.div`
     transform: translateY(calc(var(--dot)*1px));
     transition: transform 0.5s ease;
 `;
+const Tags = styled.div`
+`;
+const Tag = styled.div`
+    background: var(--elevation1);
+    display:inline-block;
+    padding:6px;
+    margin:4px;
+    font-size: 0.75rem;
+`;
 
 
 const Projects = ({ projects }) => {
@@ -91,6 +100,15 @@ const Projects = ({ projects }) => {
                 <EventR>
                     <h3>Naraka.win</h3>
                     <p>some text</p>
+                    <Tags>
+                        <Tag>React</Tag>
+                        <Tag>NextJS</Tag>
+                        <Tag>Node</Tag>
+                        <Tag>Express</Tag>
+                        <Tag>JavaScript</Tag>
+                        <Tag>MongoDB</Tag>
+                        <Tag>GraphQL</Tag>
+                    </Tags>
                 </EventR>
             </EventContainer>
             <EventTime>2021</EventTime>
@@ -98,6 +116,15 @@ const Projects = ({ projects }) => {
                 <EventL>
                     <h3>Playkog.win</h3>
                     <p>some text</p>
+                    <Tags>
+                        <Tag>React</Tag>
+                        <Tag>NextJS</Tag>
+                        <Tag>Node</Tag>
+                        <Tag>Express</Tag>
+                        <Tag>JavaScript</Tag>
+                        <Tag>MongoDB</Tag>
+                        <Tag>REST</Tag>
+                    </Tags>
                 </EventL>
             </EventContainer>
             <EventTime>2020</EventTime>
@@ -105,6 +132,10 @@ const Projects = ({ projects }) => {
                 <EventR>
                     <h3>Crypto Arbitragetracker</h3>
                     <p>some text</p>
+                    <Tags>
+                        <Tag>JavaScript</Tag>
+                        <Tag>WebSockets</Tag>
+                    </Tags>
                 </EventR>
             </EventContainer>
             <EventTime>2017</EventTime>
@@ -112,6 +143,14 @@ const Projects = ({ projects }) => {
                 <EventL>
                     <h3>Callvote.net</h3>
                     <p>some text</p>
+                    <Tags>
+                        <Tag>JavaScript</Tag>
+                        <Tag>Python</Tag>
+                        <Tag>C++</Tag>
+                        <Tag>PHP</Tag>
+                        <Tag>MySQL</Tag>
+                        <Tag>WebSockets</Tag>
+                    </Tags>
                 </EventL>
             </EventContainer>
             <EventTime>2016</EventTime>
@@ -119,6 +158,11 @@ const Projects = ({ projects }) => {
                 <EventR>
                     <h3>Gothenburg School of Economics</h3>
                     <p>some text</p>
+                    <Tags>
+                        <Tag>Statistics</Tag>
+                        <Tag>Economics</Tag>
+                        <Tag>Business</Tag>
+                    </Tags>
                 </EventR>
             </EventContainer>
             <EventTime>2015</EventTime>
@@ -126,6 +170,11 @@ const Projects = ({ projects }) => {
                 <EventL>
                     <h3>John Bauer, Uddevalla</h3>
                     <p>some text</p>
+                    <Tags>
+                        <Tag>Programming</Tag>
+                        <Tag>Networks</Tag>
+                        <Tag>Web Design</Tag>
+                    </Tags>
                 </EventL>
             </EventContainer>
             <EventTime>2008</EventTime>

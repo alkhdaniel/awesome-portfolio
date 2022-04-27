@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
 	    --headerGradient3: #f5bea5;
 	    --accentColor: #ffbc00;
 	    --waterRadial: #ff846e;
+	    --elevation1: #36384a;
 	    --sunPosition: 25px;
 	    --linkColor: #F0A040;
 	    --padding: 16px;
@@ -203,7 +204,7 @@ class EasyPortfolio extends React.Component {
 		document.documentElement.style.setProperty('--headerGradient2', `rgb(${r2}, ${g2}, ${b2})`);
 		document.documentElement.style.setProperty('--headerGradient3', `rgb(${r3}, ${g3}, ${b3})`);
 		document.documentElement.style.setProperty('--offsetY', window.pageYOffset);
-		//SmoothScroll(document,250,3)
+		SmoothScroll(document,250,5)
 	}
 
 	render() {
