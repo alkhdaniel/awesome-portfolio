@@ -24,17 +24,20 @@ const Sun = styled.div`
 		height:100px;
 		bottom: -30px;
 		transform: translate3d(0, calc(var(--offsetY)/10 * 1px), 0);
+		transition: transform 0.2s ease-out;
 		left: calc(50% - 50px);
 		background: white;
 		overflow:hidden;
 `
 
 const Title = styled.div`
-	top:40%;
+	top:45%;
 	position:relative;
 	transform: translate3d(0, calc(var(--offsetY)/2.5 * 1px), 0);
+	transition: transform 0.2s ease-out;
 	text-align:center;
 	color: var(--headerColor);
+	text-shadow: 1px 2px 6px rgb(0 0 0 / 50%);
 	z-index:3;
 `;
 

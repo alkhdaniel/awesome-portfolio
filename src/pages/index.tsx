@@ -3,7 +3,6 @@ import Header from "../components/header"
 import About from "../components/about"
 import Projects from "../components/projects"
 import Contact from "../components/contact"
-import SmoothScroll from "../components/SmoothScroll"
 import styled, { createGlobalStyle } from "styled-components"
 
 // styles
@@ -24,11 +23,13 @@ const GlobalStyle = createGlobalStyle`
 	    --headerGradient1: #614973;
 	    --headerGradient2: #c86496;
 	    --headerGradient3: #f5bea5;
-	    --accentColor: #f0a040;
+	    --accentColor: #ffbc00;
 	    --waterRadial: #ff846e;
+	    --elevation1: #36384a;
 	    --sunPosition: 25px;
 	    --linkColor: #F0A040;
 	    --padding: 16px;
+	    --dot: 0;
 	}
 	* {
 		box-sizing: border-box;
@@ -110,6 +111,7 @@ const GlobalStyle = createGlobalStyle`
     @media only screen and (min-width: 900px) {
 		:root {
 			--mainWidth: 880px;
+			font-size:18px;
 		}
 		h1 {
 			font-size:2rem;
@@ -118,7 +120,7 @@ const GlobalStyle = createGlobalStyle`
 
 	@media only screen and (min-width: 1200px) {
 		:root {
-			font-size:18px;
+			font-size:20px;
 			--mainWidth: 1024px;
 		}
 		h1 {
@@ -126,6 +128,7 @@ const GlobalStyle = createGlobalStyle`
 		}
 		h2 {
 			font-size: 1.75rem;
+			color: var(--accentColor);
 		}
 	}
 
@@ -149,6 +152,34 @@ const GlobalStyle = createGlobalStyle`
 	::-webkit-scrollbar-thumb:hover {
 	  background: #555;
 	}
+	.left {
+		@media (max-width: 900px) {
+			margin-left:20px;
+			border-left:1px solid var(--accentColor);
+		}
+		padding: 32px 0 32px 32px;
+        @media (min-width: 900px) {
+        	padding: 32px 32px 32px 0;
+	        text-align:right;
+	        border-right:1px solid var(--accentColor);
+            width:calc(50% + 0.5px);
+            float:left;
+        }
+    }
+    .right {
+    	@media (max-width: 900px) {
+			margin-left:20px;
+		}
+    	border-left:1px solid var(--accentColor);
+    	padding: 32px 0 32px 32px;
+    	margin-left:32px;
+        @media (min-width: 900px) {
+        	text-align:left;
+        	border-left:1px solid var(--accentColor);
+            width:calc(50% + 0.5px);
+            float:right;
+        }
+    }
  `
 
 
@@ -156,10 +187,6 @@ const GlobalStyle = createGlobalStyle`
 const pageTitle: string = "Daniel Al-Khrysat - Portfolio";
 const name: string = "Daniel Al-Khrysat";
 const industry: string = "Front-end Developer";
-const projects =
-<>
-<p>lol</p>
-</>;
 const contactLinks: string[] = [
 	{"text":"daniel@alkhrysat.com", "url":"mailto:daniel@alkhrysat.com"},
 	{"text":"github","url":"https://github.com/alkhdaniel"},
@@ -167,9 +194,164 @@ const contactLinks: string[] = [
 const skills: string[] = ["JavaSript", "React"];
 const about =
 <>
-<p>lorem ipsum</p>
+<p>Former Super Mario 64 TASer</p>
 <p>Based in Gothenburg, Sweden</p>
 </>;
+const projects: string[] = [
+  [
+  	"Easy Portfolio",
+    [
+      "You're looking at it",
+      "Highly customizeable portfolio template"
+    ],
+    [
+      "React",
+      "Gatsby",
+      "TypeScript",
+      "Styled Components"
+    ],
+    "2022"
+  ],[
+    "Naraka.win",
+    [
+      "Fansite - Naraka: Bladepoint",
+      "Learned Next.JS and GraphQL",
+      "~7500 pageviews/month"
+    ],
+    [
+      "React",
+      "NextJS",
+      "Node",
+      "Express",
+      "JavaScript",
+      "NGINX",
+      "MongoDB",
+      "GraphQL"
+    ],
+    "2021"
+  ],[
+    "Playkog.win",
+    [
+      "Fansite - Honor of Kings",
+      "Learned React, Node and RESTful API's",
+      "~5000 pageviews/month"
+    ],
+    [
+      "React",
+      "Node",
+      "Express",
+      "JavaScript",
+      "NGINX",
+      "MongoDB",
+      "REST",
+      "Chinese"
+    ],
+    "2020"
+  ],[
+    "China",
+    [
+      "Moved to China",
+      "Studied Chinese @ Southwestern University of Finance and Economics"
+    ],
+    [
+      "Chinese"
+    ],
+    "2018"
+  ],[
+    "Crypto Arbitragetracker",
+    [
+      "Crypto arbitrage trader",
+      "Wrote a bot to search for exchange arbitrage opportunities",
+      "Revenue +++ Time Saved +++"
+    ],
+    [
+      "JavaScript",
+      "WebSockets",
+      "Crypto"
+    ],
+    "2017"
+  ],[
+    "Japan",
+    [
+      "Exchange studies @ Hokkaido University, Japan"
+    ],
+    [
+      "Statistics",
+      "Economics",
+      "Japanese"
+    ],
+    "2016"
+  ],[
+    "Callvote.net",
+    [
+      "text"
+    ],
+    [
+      "JavaScript",
+      "Python",
+      "C++",
+      "Apache",
+      "PHP",
+      "MySQL",
+      "WebSockets"
+    ],
+    "2016"
+  ],[
+    "Gothenburg School of Economics",
+    [
+      "University"
+    ],
+    [
+      "Statistics",
+      "Economics",
+      "Business"
+    ],
+    "2015"
+  ],[
+    "John Bauer, Uddevalla",
+    [
+      "High school"
+    ],
+    [
+      "Programming",
+      "Networks",
+      "Web Design"
+    ],
+    "2008"
+  ],[
+    "Teeworlds",
+    [
+      "Contributed to an Open Source game",
+      "Created my first website",
+      "Hosted an RTMP server for live streaming"
+    ],
+    [
+      "C++",
+      "Apache",
+      "PHP",
+      "JavaScript",
+      "MySQL",
+      "RTMP"
+    ],
+    "2007"
+  ],[
+    "GameMaker",
+    [
+      "My interest in developing (games) began"
+    ],
+    [
+    ],
+    "2001"
+  ],[
+    "Hello, World!",
+    [
+      "Born in Bohus, Sweden"
+    ],
+    [
+    ],
+    "1992"
+  ]
+]
 
 
 
@@ -183,7 +365,6 @@ class EasyPortfolio extends React.Component {
 
 	componentDidMount() {
 		window.addEventListener('scroll', this.onScroll);
-		SmoothScroll(document,150,7)
 	}
 
 	componentWillUnmount() {
