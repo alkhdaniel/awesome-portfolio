@@ -120,7 +120,7 @@ const GlobalStyle = createGlobalStyle`
 
 	@media only screen and (min-width: 1200px) {
 		:root {
-			font-size:22px;
+			font-size:20px;
 			--mainWidth: 1024px;
 		}
 		h1 {
@@ -152,6 +152,27 @@ const GlobalStyle = createGlobalStyle`
 	::-webkit-scrollbar-thumb:hover {
 	  background: #555;
 	}
+	.left {
+		@media (max-width: 900px) {border-left:1px solid var(--accentColor); }
+		padding: 32px 0 32px 32px;
+        @media (min-width: 900px) {
+        	padding: 32px 32px 32px 0;
+	        text-align:right;
+	        border-right:1px solid var(--accentColor);
+            width:calc(50% + 0.5px);
+            float:left;
+        }
+    }
+    .right {
+    	border-left:1px solid var(--accentColor);
+    	padding: 32px 0 32px 32px;
+        @media (min-width: 900px) {
+        	text-align:left;
+        	border-left:1px solid var(--accentColor);
+            width:calc(50% + 0.5px);
+            float:right;
+        }
+    }
  `
 
 
@@ -159,10 +180,6 @@ const GlobalStyle = createGlobalStyle`
 const pageTitle: string = "Daniel Al-Khrysat - Portfolio";
 const name: string = "Daniel Al-Khrysat";
 const industry: string = "Front-end Developer";
-const projects =
-<>
-<p>lol</p>
-</>;
 const contactLinks: string[] = [
 	{"text":"daniel@alkhrysat.com", "url":"mailto:daniel@alkhrysat.com"},
 	{"text":"github","url":"https://github.com/alkhdaniel"},
@@ -173,6 +190,102 @@ const about =
 <p>Former Super Mario 64 TASer</p>
 <p>Based in Gothenburg, Sweden</p>
 </>;
+const projects: string[] = [
+  [
+    "Naraka.win",
+    [
+      "Fansite for the competetive online game Naraka: Bladepoint",
+      "Learned how to use Next.JS, GraphQL",
+      "~7500 pageviews/month"
+    ],
+    [
+      "React",
+      "NextJS",
+      "Node",
+      "Express",
+      "JavaScript",
+      "MongoDB",
+      "GraphQL"
+    ],
+    "2021"
+  ],[
+    "Playkog.win",
+    [
+      "Fansite for the highest-grossing mobile game nobody ever heard of: Honor of Kings",
+      "Learned how to use React, Node, RESTful API's",
+      "~5000 pageviews/month"
+    ],
+    [
+      "React",
+      "Node",
+      "Express",
+      "JavaScript",
+      "MongoDB",
+      "REST",
+      "Chinese"
+    ],
+    "2020"
+  ],[
+    "China",
+    [
+      "Moved to China",
+      "Studied Chinese full-time for a year at Southwestern University of Economics and Finance"
+    ],
+    [
+      "Chinese"
+    ],
+    "2018"
+  ],[
+    "Crypto Arbitragetracker",
+    [
+      "Did arbitrage on crypto exchanges",
+      "Wrote a bot that searched for arbitrage opportunities by connecting to exchanges through WebSockets",
+      "The bot drastically increased revenue while decreasing time spent manually searching for arbitrage oppportunities"
+    ],
+    [
+      "JavaScript",
+      "WebSockets",
+      "Crypto"
+    ],
+    "2017"
+  ],[
+    "Japan",
+    [
+      "Exchange year at Hokkaid University, Japan"
+    ],
+    [
+      "Statistics",
+      "Economics",
+      "Japanese"
+    ],
+    "2016"
+  ],[
+    "Callvote.net",
+    [
+      "text"
+    ],
+    [
+      "JavaScript",
+      "Python",
+      "C++",
+      "PHP",
+      "MySQL",
+      "WebSockets"
+    ],
+    "2016"
+  ],[
+    "Gothenburg School of Economics",
+    [
+      "University"
+    ],
+    [
+      "Statistics",
+      "Economics",
+      "Business"
+    ],
+    "2015"
+  ]
+]
 
 
 
