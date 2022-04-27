@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components"
 
 const ContactContainer = styled.div`
-    background:var(--backgroundInitial2);
+    background: #080808;
 `;
 const Content = styled.div`
     width: var(--mainWidth);

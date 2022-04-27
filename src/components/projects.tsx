@@ -2,7 +2,6 @@ import React from 'react'
 import styled from "styled-components"
 
 const ProjectsContainer = styled.div`
-    width: var(--mainWidth);
     margin:auto;
     margin-bottom: 128px;
     padding:var(--padding)
@@ -37,6 +36,7 @@ const ProjectDescription = styled.div`
 `;
 
 const Timeline = styled.div`
+    position:relative;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
@@ -45,76 +45,91 @@ const EventContainer = styled.div`
     width:100%;
 `;
 const EventR = styled.div`
-    padding:32px;
+    padding: 32px 32px 32px 0;
     width:calc(50% + 0.5px);
     text-align:right;
     float:left;
     border-right:1px solid var(--accentColor);
 `;
 const EventL = styled.div`
-    padding:32px;
+    padding: 32px 0 32px 32px;
     width:calc(50% + 0.5px);
     text-align:left;
     float:right;
     border-left:1px solid var(--accentColor);
 `;
 const EventTime = styled.div`
-    border: 1px solid var(--accentColor);
     text-align:center;
     color:var(--accentColor);
-    font-size:14px;
+    font-size:0.75rem;
     padding:8px;
-    border-radius:8px;
+`;
+const Dot = styled.div`
+    border-radius: 50%;
+    height:20px;
+    width:20px;
+    background-color: var(--accentColor);
+    position:absolute;
+    left: calc(50% - 10px);
+    top: -10px;
+    transform: translateY(calc(var(--dot)*1px));
+    transition: transform 0.5s ease;
 `;
 
 
 const Projects = ({ projects }) => {
+    function changeDot(e) {
+        let offset = e.target.offsetTop+e.target.offsetHeight/2
+        console.log(offset);
+        document.documentElement.style.setProperty('--dot', offset);;
+    }
   return (
     <ProjectsContainer>
         <Timeline>
-            <EventContainer>
+            <EventContainer onMouseEnter={changeDot}>
+                <Dot />
                 <EventR>
                     <h3>Naraka.win</h3>
                     <p>some text</p>
                 </EventR>
             </EventContainer>
             <EventTime>2021</EventTime>
-            <EventContainer>
+            <EventContainer onMouseEnter={changeDot}>
                 <EventL>
                     <h3>Playkog.win</h3>
                     <p>some text</p>
                 </EventL>
             </EventContainer>
             <EventTime>2020</EventTime>
-            <EventContainer>
+            <EventContainer onMouseEnter={changeDot}>
                 <EventR>
                     <h3>Crypto Arbitragetracker</h3>
                     <p>some text</p>
                 </EventR>
             </EventContainer>
             <EventTime>2017</EventTime>
-            <EventContainer>
+            <EventContainer onMouseEnter={changeDot}>
                 <EventL>
                     <h3>Callvote.net</h3>
                     <p>some text</p>
                 </EventL>
             </EventContainer>
             <EventTime>2016</EventTime>
-            <EventContainer>
+            <EventContainer onMouseEnter={changeDot}>
                 <EventR>
                     <h3>Gothenburg School of Economics</h3>
                     <p>some text</p>
                 </EventR>
             </EventContainer>
             <EventTime>2015</EventTime>
-            <EventContainer>
+            <EventContainer onMouseEnter={changeDot}>
                 <EventL>
                     <h3>John Bauer, Uddevalla</h3>
                     <p>some text</p>
                 </EventL>
             </EventContainer>
             <EventTime>2008</EventTime>
-            <EventContainer>
+            <EventContainer onMouseEnter={changeDot}>
                 <EventR>
                     <h3>Hello, World!</h3>
                     <p>Danieru was borned</p>

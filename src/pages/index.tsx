@@ -24,11 +24,12 @@ const GlobalStyle = createGlobalStyle`
 	    --headerGradient1: #614973;
 	    --headerGradient2: #c86496;
 	    --headerGradient3: #f5bea5;
-	    --accentColor: #f0a040;
+	    --accentColor: #ffbc00;
 	    --waterRadial: #ff846e;
 	    --sunPosition: 25px;
 	    --linkColor: #F0A040;
 	    --padding: 16px;
+	    --dot: 0;
 	}
 	* {
 		box-sizing: border-box;
@@ -110,6 +111,7 @@ const GlobalStyle = createGlobalStyle`
     @media only screen and (min-width: 900px) {
 		:root {
 			--mainWidth: 880px;
+			font-size:20px;
 		}
 		h1 {
 			font-size:2rem;
@@ -118,7 +120,7 @@ const GlobalStyle = createGlobalStyle`
 
 	@media only screen and (min-width: 1200px) {
 		:root {
-			font-size:18px;
+			font-size:24px;
 			--mainWidth: 1024px;
 		}
 		h1 {
@@ -126,6 +128,7 @@ const GlobalStyle = createGlobalStyle`
 		}
 		h2 {
 			font-size: 1.75rem;
+			color: var(--accentColor);
 		}
 	}
 
@@ -167,7 +170,7 @@ const contactLinks: string[] = [
 const skills: string[] = ["JavaSript", "React"];
 const about =
 <>
-<p>haha u gay</p>
+<p>Former Super Mario 64 TASer</p>
 <p>Based in Gothenburg, Sweden</p>
 </>;
 
@@ -183,7 +186,6 @@ class EasyPortfolio extends React.Component {
 
 	componentDidMount() {
 		window.addEventListener('scroll', this.onScroll);
-		SmoothScroll(document,150,7)
 	}
 
 	componentWillUnmount() {
@@ -201,6 +203,7 @@ class EasyPortfolio extends React.Component {
 		document.documentElement.style.setProperty('--headerGradient2', `rgb(${r2}, ${g2}, ${b2})`);
 		document.documentElement.style.setProperty('--headerGradient3', `rgb(${r3}, ${g3}, ${b3})`);
 		document.documentElement.style.setProperty('--offsetY', window.pageYOffset);
+		//SmoothScroll(document,250,3)
 	}
 
 	render() {
