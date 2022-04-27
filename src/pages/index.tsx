@@ -153,7 +153,10 @@ const GlobalStyle = createGlobalStyle`
 	  background: #555;
 	}
 	.left {
-		@media (max-width: 900px) {border-left:1px solid var(--accentColor); }
+		@media (max-width: 900px) {
+			margin-left:20px;
+			border-left:1px solid var(--accentColor);
+		}
 		padding: 32px 0 32px 32px;
         @media (min-width: 900px) {
         	padding: 32px 32px 32px 0;
@@ -164,8 +167,12 @@ const GlobalStyle = createGlobalStyle`
         }
     }
     .right {
+    	@media (max-width: 900px) {
+			margin-left:20px;
+		}
     	border-left:1px solid var(--accentColor);
     	padding: 32px 0 32px 32px;
+    	margin-left:32px;
         @media (min-width: 900px) {
         	text-align:left;
         	border-left:1px solid var(--accentColor);
@@ -192,10 +199,23 @@ const about =
 </>;
 const projects: string[] = [
   [
+  	"Easy Portfolio",
+    [
+      "You're looking at it",
+      "Highly customizeable portfolio template"
+    ],
+    [
+      "React",
+      "Gatsby",
+      "TypeScript",
+      "Styled Components"
+    ],
+    "2022"
+  ],[
     "Naraka.win",
     [
-      "Fansite for the competetive online game Naraka: Bladepoint",
-      "Learned how to use Next.JS, GraphQL",
+      "Fansite - Naraka: Bladepoint",
+      "Learned Next.JS and GraphQL",
       "~7500 pageviews/month"
     ],
     [
@@ -204,6 +224,7 @@ const projects: string[] = [
       "Node",
       "Express",
       "JavaScript",
+      "NGINX",
       "MongoDB",
       "GraphQL"
     ],
@@ -211,8 +232,8 @@ const projects: string[] = [
   ],[
     "Playkog.win",
     [
-      "Fansite for the highest-grossing mobile game nobody ever heard of: Honor of Kings",
-      "Learned how to use React, Node, RESTful API's",
+      "Fansite - Honor of Kings",
+      "Learned React, Node and RESTful API's",
       "~5000 pageviews/month"
     ],
     [
@@ -220,6 +241,7 @@ const projects: string[] = [
       "Node",
       "Express",
       "JavaScript",
+      "NGINX",
       "MongoDB",
       "REST",
       "Chinese"
@@ -229,7 +251,7 @@ const projects: string[] = [
     "China",
     [
       "Moved to China",
-      "Studied Chinese full-time for a year at Southwestern University of Economics and Finance"
+      "Studied Chinese @ Southwestern University of Finance and Economics"
     ],
     [
       "Chinese"
@@ -238,9 +260,9 @@ const projects: string[] = [
   ],[
     "Crypto Arbitragetracker",
     [
-      "Did arbitrage on crypto exchanges",
-      "Wrote a bot that searched for arbitrage opportunities by connecting to exchanges through WebSockets",
-      "The bot drastically increased revenue while decreasing time spent manually searching for arbitrage oppportunities"
+      "Crypto arbitrage trader",
+      "Wrote a bot to search for exchange arbitrage opportunities",
+      "Revenue +++ Time Saved +++"
     ],
     [
       "JavaScript",
@@ -251,7 +273,7 @@ const projects: string[] = [
   ],[
     "Japan",
     [
-      "Exchange year at Hokkaid University, Japan"
+      "Exchange studies @ Hokkaido University, Japan"
     ],
     [
       "Statistics",
@@ -268,6 +290,7 @@ const projects: string[] = [
       "JavaScript",
       "Python",
       "C++",
+      "Apache",
       "PHP",
       "MySQL",
       "WebSockets"
@@ -284,6 +307,49 @@ const projects: string[] = [
       "Business"
     ],
     "2015"
+  ],[
+    "John Bauer, Uddevalla",
+    [
+      "High school"
+    ],
+    [
+      "Programming",
+      "Networks",
+      "Web Design"
+    ],
+    "2008"
+  ],[
+    "Teeworlds",
+    [
+      "Contributed to an Open Source game",
+      "Created my first website",
+      "Hosted an RTMP server for live streaming"
+    ],
+    [
+      "C++",
+      "Apache",
+      "PHP",
+      "JavaScript",
+      "MySQL",
+      "RTMP"
+    ],
+    "2007"
+  ],[
+    "GameMaker",
+    [
+      "My interest in developing (games) began"
+    ],
+    [
+    ],
+    "2001"
+  ],[
+    "Hello, World!",
+    [
+      "Born in Bohus, Sweden"
+    ],
+    [
+    ],
+    "1992"
   ]
 ]
 
