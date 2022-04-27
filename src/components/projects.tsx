@@ -88,8 +88,7 @@ const Tag = styled.div`
 
 const Projects = ({ projects }) => {
     function changeDot(e) {
-        let offset = e.target.offsetTop+e.target.offsetHeight/2
-        console.log(offset);
+        let offset = e.currentTarget.offsetTop+e.currentTarget.offsetHeight/2
         document.documentElement.style.setProperty('--dot', offset);;
     }
   return (

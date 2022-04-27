@@ -3,7 +3,6 @@ import Header from "../components/header"
 import About from "../components/about"
 import Projects from "../components/projects"
 import Contact from "../components/contact"
-import SmoothScroll from "../components/SmoothScroll"
 import styled, { createGlobalStyle } from "styled-components"
 
 // styles
@@ -112,7 +111,7 @@ const GlobalStyle = createGlobalStyle`
     @media only screen and (min-width: 900px) {
 		:root {
 			--mainWidth: 880px;
-			font-size:20px;
+			font-size:18px;
 		}
 		h1 {
 			font-size:2rem;
@@ -121,7 +120,7 @@ const GlobalStyle = createGlobalStyle`
 
 	@media only screen and (min-width: 1200px) {
 		:root {
-			font-size:24px;
+			font-size:22px;
 			--mainWidth: 1024px;
 		}
 		h1 {
@@ -204,7 +203,6 @@ class EasyPortfolio extends React.Component {
 		document.documentElement.style.setProperty('--headerGradient2', `rgb(${r2}, ${g2}, ${b2})`);
 		document.documentElement.style.setProperty('--headerGradient3', `rgb(${r3}, ${g3}, ${b3})`);
 		document.documentElement.style.setProperty('--offsetY', window.pageYOffset);
-		SmoothScroll(document,250,5)
 	}
 
 	render() {
