@@ -2,8 +2,8 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `awesome-portfolio`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Easy Portfolio`,
+    siteUrl: `https://alkhrysat.com`
   },
   plugins: ["gatsby-plugin-styled-components"]
 };
