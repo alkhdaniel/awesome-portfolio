@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
     body {
     	background: var(--backgroundInitial);
     }
-    h1, h2 {
+    h1, h2{
     	text-align:center;
     	font-family: var(--headerFont);
     }
@@ -53,15 +53,19 @@ const GlobalStyle = createGlobalStyle`
     	text-transform: uppercase;
     	font-size:1.95rem;
     	font-weight:600;
-    	letter-spacing:2px;
+    	letter-spacing:3px;
     }
     h2 {
     	color: #f0a040;
-		text-transform: uppercase;
+		  text-transform: uppercase;
     	font-size:1.4rem;
     	font-weight:500;
-    	letter-spacing:1px;
+    	letter-spacing:2px;
     	margin-bottom:64px;
+    }
+    h3 {
+      letter-spacing:1px;
+      font-weight:400;
     }
 	a {
 		padding: 0px 0;
@@ -108,30 +112,36 @@ const GlobalStyle = createGlobalStyle`
 		transform: translateY(0px);
 	}
 
+  @media only screen and (min-width: 800px) {
+    :root {
+      --mainWidth: 760px;
+    }
+  }
 
-    @media only screen and (min-width: 900px) {
-		:root {
-			--mainWidth: 880px;
-			font-size:18px;
-		}
-		h1 {
-			font-size:2rem;
-		}
-	}
 
-	@media only screen and (min-width: 1200px) {
-		:root {
-			font-size:20px;
-			--mainWidth: 1024px;
-		}
-		h1 {
-			font-size: 2.5rem;
-		}
-		h2 {
-			font-size: 1.75rem;
-			color: var(--accentColor);
-		}
+  @media only screen and (min-width: 1280px) {
+	:root {
+		--mainWidth: 1200px;
+		font-size:18px;
 	}
+	h1 {
+		font-size:2rem;
+	}
+}
+
+@media only screen and (min-width: 1680px) {
+	:root {
+		font-size:20px;
+		--mainWidth: 1400px;
+	}
+	h1 {
+		font-size: 2.5rem;
+	}
+	h2 {
+		font-size: 1.75rem;
+		color: var(--accentColor);
+	}
+}
 
 	/* Scrollbar */
 	/* width */
