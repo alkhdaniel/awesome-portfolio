@@ -4,6 +4,7 @@ import About from "../components/about"
 import Projects from "../components/projects"
 import Contact from "../components/contact"
 import styled, { createGlobalStyle } from "styled-components"
+import {Helmet} from "react-helmet"
 
 // styles
 const GlobalStyle = createGlobalStyle`
@@ -387,6 +388,11 @@ class EasyPortfolio extends React.Component {
 	render() {
 		return (
 			<>
+        <Helmet>
+        <link rel="icon" href="/static/favicon.ico" />
+        <link rel="icon" href="/static/favicon-32x32.png" />
+        <link rel="icon" href="/static/favicon-16x16.png" />
+        </Helmet>
 				<GlobalStyle />
 				<main>
 					<title>{pageTitle}</title>
