@@ -112,7 +112,7 @@ const GlobalStyle = createGlobalStyle`
 		transform: translateY(0px);
 	}
 
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 860px) {
     :root {
       --mainWidth: 760px;
     }
@@ -129,7 +129,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 }
 
-@media only screen and (min-width: 1680px) {
+@media only screen and (min-width: 1600px) {
 	:root {
 		font-size:20px;
 		--mainWidth: 1400px;
@@ -164,12 +164,12 @@ const GlobalStyle = createGlobalStyle`
 	  background: #555;
 	}
 	.left {
-		@media (max-width: 900px) {
+		@media (max-width: 860px) {
 			margin-left:20px;
 			border-left:1px solid var(--accentColor);
 		}
 		padding: 32px 0 32px 32px;
-        @media (min-width: 900px) {
+        @media (min-width: 860px) {
         	padding: 32px 32px 32px 0;
 	        text-align:right;
 	        border-right:1px solid var(--accentColor);
@@ -178,13 +178,13 @@ const GlobalStyle = createGlobalStyle`
         }
     }
     .right {
-    	@media (max-width: 900px) {
+    	@media (max-width: 860px) {
 			margin-left:20px;
 		}
     	border-left:1px solid var(--accentColor);
     	padding: 32px 0 32px 32px;
     	margin-left:32px;
-        @media (min-width: 900px) {
+        @media (min-width: 860px) {
         	text-align:left;
         	border-left:1px solid var(--accentColor);
             width:calc(50% + 0.5px);
