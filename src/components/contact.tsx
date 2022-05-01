@@ -24,18 +24,18 @@ const Contact = styled.div`
 `;
 
 
-const Header = ({ links }) => {
+const Footer = ({ links }) => {
   return (
     <ContactContainer>
         <Content>
             <Title>Contact</Title>
             <ContactList>
                 {links.map((link) => 
-                    <a href={link.url}>{link.text}</a>
+                    <a key={link.text} href={link.url}>{link.text}</a>
                 )}
             </ContactList>
         </Content>
     </ContactContainer>
     )
 }
-export default Header
+export default Footer

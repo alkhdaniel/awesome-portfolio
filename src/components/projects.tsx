@@ -13,7 +13,7 @@ const Timeline = styled.section`
         justify-content:center;
     }
 `;
-const EventContainer = styled.div`
+const EventContainer = styled.article`
     width:100%;
 `;
 const Event = styled.div`
@@ -43,9 +43,9 @@ const Dot = styled.div`
         left: calc(50% - 10px);
     }
 `;
-const Tags = styled.div`
+const Tags = styled.ul`
 `;
-const Tag = styled.div`
+const Tag = styled.li`
     background: var(--elevation1);
     display:inline-block;
     padding:6px;
@@ -68,15 +68,15 @@ const Projects = ({ projects }) => {
             <Dot />
                 {projects.map((project, i) => 
                     <>
-                        <EventContainer onMouseEnter={changeDot}>
+                        <EventContainer key={i} onMouseEnter={changeDot}>
                             <Event className={i % 2 ? "right" : "left"}>
                                 <h3>{project[0]}</h3>
                                 {project[1].map((bulletpoint) => 
-                                    <BulletPoint>{bulletpoint}</BulletPoint>
+                                    <BulletPoint key={bulletpoint}>{bulletpoint}</BulletPoint>
                                 )}
                                 <Tags>
                                     {project[2].map((tag) => 
-                                    <Tag>{tag}</Tag>
+                                    <Tag key={tag}>{tag}</Tag>
                                 )}
                                 </Tags>
                             </Event>
