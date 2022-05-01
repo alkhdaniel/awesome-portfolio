@@ -8,7 +8,7 @@ const Timeline = styled.div`
     position:relative;
     display:flex;
     flex-wrap:wrap;
-    @media (min-width: 900px) {
+    @media (min-width: 860px) {
         padding:var(--padding);
         justify-content:center;
     }
@@ -23,7 +23,7 @@ const EventYear = styled.div`
     color:var(--accentColor);
     font-size:0.75rem;
     padding:8px;
-    @media (min-width: 900px) {
+    @media (min-width: 860px) {
         padding:8px;
         text-align:center;
     }
@@ -39,7 +39,7 @@ const Dot = styled.div`
     top: -10px;
     transform: translateY(calc(var(--dot)*1px));
     transition: transform 0.5s ease;
-    @media (min-width: 900px) {
+    @media (min-width: 860px) {
         left: calc(50% - 10px);
     }
 `;

@@ -18,7 +18,7 @@ const TextContainer = styled.div`
 	grid-template-rows: 1fr;
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
-	@media only screen and (min-width: 800px) {
+	@media only screen and (min-width: 860px) {
 		grid-template-columns: repeat(3, 1fr);
 	}
 `;
