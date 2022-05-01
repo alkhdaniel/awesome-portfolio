@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 
-const AboutContainer = styled.div`
+const AboutContainer = styled.section`
     & {
         position:relative;
         width: var(--mainWidth);

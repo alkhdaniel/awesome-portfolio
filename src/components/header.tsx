@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components"
 import StarrySky from "./starrySky"
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
 	height:100vh;
 	overflow:hidden;
 `;

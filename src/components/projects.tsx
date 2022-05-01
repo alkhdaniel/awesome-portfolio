@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 
-const Timeline = styled.div`
+const Timeline = styled.section`
     margin:auto;
     margin-bottom:128px;
     padding:var(--padding);

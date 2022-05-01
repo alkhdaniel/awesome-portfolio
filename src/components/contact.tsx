@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 
-const ContactContainer = styled.div`
+const ContactContainer = styled.footer`
     background: #080808;
 `;
 const Content = styled.div`
