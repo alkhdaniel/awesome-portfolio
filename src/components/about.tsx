@@ -19,48 +19,43 @@ const TextContainer = styled.div`
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
 	@media only screen and (min-width: 860px) {
-		grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	}
 `;
 const TextItem = styled.div`
+    margin: 16px 16px;
 `;
 const TextItemTitle = styled.h3`
-	text-transform: uppercase;
-	letter-spacing:2px;
-	text-align:center;
-	font-weight:400;
+    text-transform: uppercase;
+    letter-spacing:2px;
+    text-align:center;
+    font-weight:400;
 `;
 const Seperator = styled.div`
-	width: 64px;
+	width: 80px;
 	height: 2px;
-	margin: 8px auto;
-	background: var(--accentColor);
+	margin: 16px auto;
+    background: radial-gradient(circle,var(--accentColor) 40%,rgba(255,255,255,0) 100%);
 `;
-const TextItemDescription = styled.div`
+const TextItemDescription = styled.p`
+    line-height:1.4;
+    font-size:0.9rem;
 `;
 
 
 
-const About = ({ text }) => {
+const About = ({ about }) => {
   return (
     <AboutContainer>
     <Title>About</Title>
     <TextContainer>
-    	<TextItem>
-    		<TextItemTitle>Develop</TextItemTitle>
-    		<Seperator />
-    		<TextItemDescription>Test</TextItemDescription>
-    	</TextItem>
-    	<TextItem>
-    		<TextItemTitle>Explore</TextItemTitle>
-    		<Seperator />
-    		<TextItemDescription>Test</TextItemDescription>
-    	</TextItem>
-    	<TextItem>
-    		<TextItemTitle>Learn</TextItemTitle>
-    		<Seperator />
-    		<TextItemDescription>Test</TextItemDescription>
-    	</TextItem>
+        {about.map((item, i) => 
+            <TextItem key={i}>
+            <TextItemTitle>{item[0]}</TextItemTitle>
+            <Seperator />
+            <TextItemDescription>{item[1]}</TextItemDescription>
+            </TextItem>
+        )}
     </TextContainer>
     </AboutContainer>
     )

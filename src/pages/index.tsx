@@ -51,17 +51,17 @@ const GlobalStyle = createGlobalStyle`
     }
     h1 {
     	text-transform: uppercase;
-    	font-size:1.95rem;
+    	font-size:1.9rem;
     	font-weight:600;
     	letter-spacing:3px;
     }
     h2 {
     	color: #f0a040;
 		  text-transform: uppercase;
-    	font-size:1.4rem;
+    	font-size:1.5rem;
     	font-weight:500;
     	letter-spacing:2px;
-    	margin-bottom:64px;
+    	margin-bottom:20px;
     }
     h3 {
       letter-spacing:1px;
@@ -114,19 +114,21 @@ const GlobalStyle = createGlobalStyle`
 
   @media only screen and (min-width: 860px) {
     :root {
-      --mainWidth: 760px;
+      --mainWidth: 90%;
     }
   }
 
 
   @media only screen and (min-width: 1280px) {
-	:root {
-		--mainWidth: 1200px;
-		font-size:18px;
-	}
-	h1 {
-		font-size:2rem;
-	}
+  	:root {
+  		--mainWidth: 1100px;
+  	}
+    h1 {
+      font-size:2.1rem;
+    }
+    h2 {
+      font-size:1.6rem;
+    }
 }
 
 @media only screen and (min-width: 1600px) {
@@ -203,11 +205,21 @@ const contactLinks: string[] = [
 	{"text":"github","url":"https://github.com/alkhdaniel"},
 	{"text":"linkedin","url":"https://www.linkedin.com/in/daniel-alkhrysat/"}]
 const skills: string[] = ["JavaSript", "React"];
-const about =
-<>
-<p>Former Super Mario 64 TASer</p>
-<p>Based in Gothenburg, Sweden</p>
-</>;
+const about: string[] = 
+  [
+    [
+      "Develop",
+      "My passion for developing began as a teen wanting to create games - it led me on a path to where I've launched numerous websites, programmed countless of small apps or solutions and explored a vast section of software engineering."
+    ],
+    [
+      "Explore",
+      "Exploring the world, visiting  unique places and making new friends fills me with great excitement."
+    ],
+    [
+      "Learn",
+      ""
+    ]
+  ];
 const projects: string[] = [
   [
   	"Easy Portfolio",
@@ -227,7 +239,7 @@ const projects: string[] = [
     [
       "Fansite - Naraka: Bladepoint",
       "Learned Next.JS and GraphQL",
-      "~7500 pageviews/month"
+      "Currently serves around 2.5k unique visitors / month"
     ],
     [
       "React",
@@ -245,7 +257,7 @@ const projects: string[] = [
     [
       "Fansite - Honor of Kings",
       "Learned React, Node and RESTful API's",
-      "~5000 pageviews/month"
+      "Currently serves around 2k unique visitors / month"
     ],
     [
       "React",
@@ -398,7 +410,7 @@ class EasyPortfolio extends React.Component {
 	render() {
 		return (
 			<>
-        <Helmet>
+        <Helmet htmlAttributes={{lang: 'en',}}>
         <link rel="icon" href="/static/favicon.ico" />
         <link rel="icon" href="/static/favicon-32x32.png" />
         <link rel="icon" href="/static/favicon-16x16.png" />
@@ -407,7 +419,7 @@ class EasyPortfolio extends React.Component {
 				<main>
 					<title>{pageTitle}</title>
 					<Header name={name} industry={industry}/>
-					<About text={about} />
+					<About about={about} />
 					<Projects projects={projects} />
 					<Contact links={contactLinks} />
 				</main>

@@ -54,7 +54,7 @@ const Tag = styled.li`
 `;
 const BulletPoint = styled.p`
     margin:4px;
-    font-size: 0.8rem;
+    font-size:0.9rem;
 `;
 
 
