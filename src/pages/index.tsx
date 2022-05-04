@@ -217,7 +217,7 @@ const about: string[] =
     ],
     [
       "Learn",
-      ""
+      "I love learning computer science and languages:<br />Recent: 10ECTS in Python/Machine Learning<br />Current: AWS Solutions Architect & Chinese<br/>Future: Kubernetes."
     ]
   ];
 const projects: string[] = [

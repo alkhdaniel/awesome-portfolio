@@ -51,9 +51,9 @@ const About = ({ about }) => {
     <TextContainer>
         {about.map((item, i) => 
             <TextItem key={i}>
-            <TextItemTitle>{item[0]}</TextItemTitle>
+            <TextItemTitle dangerouslySetInnerHTML={{__html: item[0]}} />
             <Seperator />
-            <TextItemDescription>{item[1]}</TextItemDescription>
+            <TextItemDescription dangerouslySetInnerHTML={{__html: item[1]}} />
             </TextItem>
         )}
     </TextContainer>
