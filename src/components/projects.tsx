@@ -1,11 +1,11 @@
 import React from 'react'
+import { useRef, useEffect } from 'react'
 import styled from "styled-components"
 
 const Timeline = styled.section`
     margin:auto;
     margin-bottom:128px;
     padding:var(--padding);
-    position:relative;
     display:flex;
     flex-wrap:wrap;
     @media (min-width: 860px) {
@@ -57,18 +57,34 @@ const BulletPoint = styled.p`
     font-size:0.9rem;
 `;
 
-
 const Projects = ({ projects }) => {
-    function changeDot(e) {
-        let offset = e.currentTarget.offsetTop+e.currentTarget.offsetHeight/2
-        document.documentElement.style.setProperty('--dot', offset);;
-    }
-  return (
+    /*useEffect(() => {
+        const onScroll = e => {
+            const y = (window.scrollY || window.pageYOffset) + window.innerHeight/2.25;
+            for (let i = 0; i < containers.length; i++) {
+                if (y > containers[i].current.offsetTop && y < containers[i].current.offsetTop+containers[i].current.offsetHeight) {
+                    let offset = containers[i].current.offsetTop+containers[i].current.offsetHeight/2
+                    document.documentElement.style.setProperty('--dot', offset);
+                }
+            } 
+        };
+        window.addEventListener("scroll", onScroll);
+
+        return () => window.removeEventListener("scroll", onScroll);
+    });*/
+
+
+    let containers = new Array();
+    projects.map((project, i) => {
+        containers[i] = useRef(0);
+    });
+
+    return (
         <Timeline>    
-            <Dot />
+            {/*<Dot />*/}
                 {projects.map((project, i) => 
                     <>
-                        <EventContainer key={i} onMouseEnter={changeDot}>
+                        <EventContainer key={i} ref={containers[i]}>
                             <Event className={i % 2 ? "right" : "left"}>
                                 <h3>{project[0]}</h3>
                                 {project[1].map((bulletpoint) => 

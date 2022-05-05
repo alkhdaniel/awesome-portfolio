@@ -388,6 +388,7 @@ class EasyPortfolio extends React.Component {
 
 	componentDidMount() {
 		window.addEventListener('scroll', this.onScroll);
+    this.onScroll();
 	}
 
 	componentWillUnmount() {
@@ -411,18 +412,18 @@ class EasyPortfolio extends React.Component {
 		return (
 			<>
         <Helmet htmlAttributes={{lang: 'en',}}>
+        <title>{pageTitle}</title>
         <link rel="icon" href="/static/favicon.ico" />
         <link rel="icon" href="/static/favicon-32x32.png" />
         <link rel="icon" href="/static/favicon-16x16.png" />
         </Helmet>
 				<GlobalStyle />
+        <Header name={name} industry={industry}/>
 				<main>
-					<title>{pageTitle}</title>
-					<Header name={name} industry={industry}/>
 					<About about={about} />
 					<Projects projects={projects} />
-					<Contact links={contactLinks} />
 				</main>
+        <Contact links={contactLinks} />
 			</>
 		)
 	}
