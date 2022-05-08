@@ -84,40 +84,35 @@ const GlobalStyle = createGlobalStyle`
 		font-size:1rem
 	}
 
-	a::before, a::after {
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: 2px;
-		background: #fff;
-		content: '';
-		opacity: 0;
-		transition: opacity 0.3s, transform 0.3s;
-		transform: translateY(-10px);
-	}
-	a::before {
-		top: 0;
-		transform: translateY(-4px);
-	}
-	a::after {
-		bottom: 0;
-		transform: translateY(4px);
-	}
-
-	a:hover {
-		color: #fff;
-	}
-	a:hover::before, a:hover::after {
-		opacity: 1;
-		transform: translateY(0px);
-	}
-
-  @media only screen and (min-width: 860px) {
-    :root {
-      --mainWidth: 90%;
-    }
+  a:focus {
+    outline: 2px solid var(--accentColor);
   }
 
+  a:hover {
+  }
+
+  svg {
+    transition: fill 0.33s ease-in-out;
+    fill:white;
+    width:48px;
+    height:48px;
+    padding:8px;
+    margin:0 8px;
+  }
+  .leetcode:hover {
+    fill: #FFA116;
+  }
+  .github:hover {
+    fill: #6e7781;
+  }
+  .linkedin:hover {
+    fill: #0A66C2;
+  }
+
+  i {
+    font-size:2rem;
+    margin:4px;
+  }
 
   @media only screen and (min-width: 1280px) {
   	:root {
@@ -200,10 +195,11 @@ const GlobalStyle = createGlobalStyle`
 const pageTitle: string = "Daniel Al-Khrysat - Portfolio";
 const name: string = "Daniel Al-Khrysat";
 const industry: string = "Front-end Developer";
+const email: string = {"text":"daniel@alkhrysat.com", "url":"mailto:daniel@alkhrysat.com"}
 const contactLinks: string[] = [
-	{"text":"daniel@alkhrysat.com", "url":"mailto:daniel@alkhrysat.com"},
 	{"text":"github","url":"https://github.com/alkhdaniel"},
-	{"text":"linkedin","url":"https://www.linkedin.com/in/daniel-alkhrysat/"}]
+	{"text":"linkedin","url":"https://www.linkedin.com/in/daniel-alkhrysat/"},
+  {"text":"leetcode","url":"https://leetcode.com/a-daniel/"}]
 const skills: string[] = ["JavaSript", "React"];
 const about: string[] = 
   [
@@ -416,6 +412,7 @@ class EasyPortfolio extends React.Component {
         <link rel="icon" href="/static/favicon.ico" />
         <link rel="icon" href="/static/favicon-32x32.png" />
         <link rel="icon" href="/static/favicon-16x16.png" />
+        <script src="https://kit.fontawesome.com/dac55c9186.js" crossorigin="anonymous"></script>
         </Helmet>
 				<GlobalStyle />
         <Header name={name} industry={industry}/>
@@ -423,7 +420,7 @@ class EasyPortfolio extends React.Component {
 					<About about={about} />
 					<Projects projects={projects} />
 				</main>
-        <Contact links={contactLinks} />
+        <Contact email={email} links={contactLinks} />
 			</>
 		)
 	}
